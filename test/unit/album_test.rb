@@ -1,6 +1,8 @@
 require 'test_helper'
 
 class AlbumTest < ActiveSupport::TestCase
+  should have_many(:album_images).dependent :destroy
+  should have_many(:images).through :album_images
   should allow_mass_assignment_of :title
   should_not allow_mass_assignment_of :position
 
@@ -23,5 +25,16 @@ class AlbumTest < ActiveSupport::TestCase
     a1.reload
 
     assert_equal [a2, a1], Album.ordered
+  end
+
+  should "order associated images by position" do
+    a = Factory(:album)
+    ai1 = Factory(:album_image, :album => a)
+    ai2 = Factory(:album_image, :album => a)
+    ai2.move_higher
+    ai1.reload
+
+    assert_equal [ai2, ai1], a.album_images
+    assert_equal [ai2.image, ai1.image], a.images
   end
 end
