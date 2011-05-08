@@ -1,4 +1,6 @@
 AnnetteRobinson::Application.routes.draw do
+  resources :images
+
   resources :albums
 
   # The priority is based upon order of creation:
