@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_filter :authorize
+  before_filter :authorize, :except => :download
 
   # GET /images
   # GET /images.xml
@@ -86,5 +86,16 @@ class ImagesController < ApplicationController
       format.html { redirect_to(images_url) }
       format.xml  { head :ok }
     end
+  end
+
+  # GET /images/1/:style/:filename.:format
+  def download
+    head(:bad_request) and return if params[:style].downcase == 'original' && !logged_in?
+    
+    image = Image.find(params[:id])
+    path = image.image.path(params[:style])
+    head(:bad_request) and return unless File.exist?(path)
+
+    send_file path, :type => image.image.content_type, :disposition => 'inline'
   end
 end

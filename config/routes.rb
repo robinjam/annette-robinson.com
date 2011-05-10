@@ -21,6 +21,8 @@ AnnetteRobinson::Application.routes.draw do
     end
   end
 
+  match 'images/:id/:style/:filename', :controller => 'images', :action => 'download', :via => :get
+
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post
   match 'logout' => 'sessions#destroy'
