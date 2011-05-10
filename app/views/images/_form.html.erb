@@ -11,15 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <p class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
-  <div class="field">
+  </p>
+  <p class="field">
     <%= f.label :image %><br />
     <%= f.file_field :image %>
-  </div>
-  <div class="actions">
+  </p>
+  <p class="actions">
     <%= f.submit %>
-  </div>
+    <%= link_to 'Cancel', images_path %>
+  </p>
 <% end %>

@@ -11,11 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <p class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
-  </div>
-  <div class="actions">
+  </p>
+  <p class="actions">
     <%= f.submit %>
-  </div>
+    <%= link_to 'Back', root_path %>
+  </p>
 <% end %>

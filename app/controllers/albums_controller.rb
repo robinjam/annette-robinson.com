@@ -88,7 +88,7 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(root_url) }
+      format.html { redirect_to(root_url, :notice => 'Album was successfully deleted.') }
       format.xml  { head :ok }
     end
   end

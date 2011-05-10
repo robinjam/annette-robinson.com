@@ -7,8 +7,7 @@ class AlbumImagesController < ApplicationController
   def new
     @album_image = AlbumImage.new
     @album_image.album = Album.find(params[:album_id])
-    redirect_to @album_image.album and return if @album_image.album.images_not_present.empty?
-    # TODO: Add notice
+    redirect_to @album_image.album, :notice => 'That album already contains every image you have uploaded.' and return if @album_image.album.images_not_present.empty?
 
     respond_to do |format|
       format.html # new.html.erb
