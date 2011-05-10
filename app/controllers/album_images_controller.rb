@@ -1,4 +1,5 @@
 class AlbumImagesController < ApplicationController
+  before_filter :authorize
   before_filter :fetch_album_image, :only => [:destroy, :promote, :demote]
 
   # GET /albums/1/images/new

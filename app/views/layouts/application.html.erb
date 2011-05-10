@@ -15,7 +15,18 @@
   <div class="main">
     <div class="sidebar">
       <h1>Annette<br>Robinson</h1>
-      <%= yield :sidebar %>
+      <% unless flash[:notice].blank? %>
+        <p class="notice"><%= flash[:notice] %></p>
+      <% end %>
+      <% unless flash[:alert].blank? %>
+        <p class="alert"><%= flash[:alert] %></p>
+      <% end %>
+      <ul>
+        <%= yield :sidebar %>
+        <% if logged_in? %>
+          <li><%= link_to 'Log out', logout_path %></li>
+        <% end %>
+      </ul>
     </div>
     <div class="content">
       <%= yield %>

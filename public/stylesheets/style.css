@@ -124,3 +124,15 @@ a {
 .button_to, .button_to div {
   display: inline;
 }
+
+.notice {
+  border: solid 1px green;
+  padding: 5px;
+  background-color: #AFA;
+}
+
+.alert {
+  border: solid 1px red;
+  padding: 5px;
+  background-color: #FAA;
+}

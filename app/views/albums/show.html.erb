@@ -15,24 +15,30 @@
   </script>
 <% end %>
 <% content_for :sidebar do %>
-  <ul>
-    <% Album.ordered.each do |album| %>
-      <li>
-        <%= link_to_unless_current album.title, album %>
+  <% Album.ordered.each do |album| %>
+    <li>
+      <%= link_to_unless_current album.title, album %>
+      <% if logged_in? %>
         <%= button_to '✎', edit_album_path(album), :method => :get %>
         <%= button_to '✗', delete_album_path(album), :method => :get %>
         <%= button_to '↑', promote_album_path(album) %>
         <%= button_to '↓', demote_album_path(album) %>
         <%= button_to '+', new_album_image_path(album), :method => :get %>
-      </li>
-    <% end %>
+      <% end %>
+    </li>
+  <% end %>
+  <% if logged_in? %>
     <li style="margin-top: 10px"><%= link_to 'New album...', new_album_path %></li>
     <li><%= link_to 'Manage images...', images_path %></li>
-  </ul>
+  <% end %>
 <% end %>
 <% @album.images.each do |image| %>
-  <%= button_to '←', promote_album_image_path(@album, image) %>
+  <% if logged_in? %>
+    <%= button_to '←', promote_album_image_path(@album, image) %>
+  <% end %>
   <%= image_tag image.image.url %>
-  <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
-  <%= button_to '→', demote_album_image_path(@album, image) %>
+  <% if logged_in? %>
+    <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
+    <%= button_to '→', demote_album_image_path(@album, image) %>
+  <% end %>
 <% end %>

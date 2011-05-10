@@ -1,6 +1,9 @@
 class AlbumsController < ApplicationController
+  before_filter :authorize, :except => [:first, :show]
+
   # GET /
   def first
+    flash.keep
     redirect_to album_url(Album.ordered.first) if Album.count > 0
   end
 
