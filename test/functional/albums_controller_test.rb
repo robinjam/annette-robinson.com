@@ -3,6 +3,7 @@ require 'test_helper'
 class AlbumsControllerTest < ActionController::TestCase
   setup do
     @album = Factory(:album)
+    log_in
   end
 
   test "should get first album" do

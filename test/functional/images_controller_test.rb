@@ -3,6 +3,7 @@ require 'test_helper'
 class ImagesControllerTest < ActionController::TestCase
   setup do
     @image = Factory(:image)
+    log_in
   end
 
   test "should get index" do

@@ -3,16 +3,20 @@ require 'test_helper'
 class AlbumImagesControllerTest < ActionController::TestCase
   setup do
     @album_image = Factory(:album_image)
+    log_in
   end
 
   test "should get new" do
+    Factory(:image) #TODO: Add additional test without this
     get :new, :album_id => @album_image.album.to_param
     assert_response :success
   end
 
   test "should create album image" do
     assert_difference('AlbumImage.count') do
-      post :create, :album_id => @album_image.album.to_param, :image_id => Factory(:image).to_param
+      album_id = @album_image.album.to_param
+      image_id = Factory(:image).to_param
+      post :create, :album_id => album_id, :album_image => { :image_id => image_id }
     end
 
     assert_redirected_to @album_image.album
