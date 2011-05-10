@@ -4,7 +4,7 @@ require "bundler/capistrano"
 # Application setup
 set :application, "annette-robinson"
 server "staging.annette-robinson.com", :app, :web, :db, :primary => true
-set :deploy_to "/home/annette-robinson/annette-robinson"
+set :deploy_to, "/home/annette-robinson/annette-robinson"
 set :deploy_via, :remote_cache
 set :user, "annette-robinson"
 set :use_sudo, false
