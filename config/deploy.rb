@@ -12,9 +12,10 @@ set :use_sudo, false
 # SCM setup
 set :scm, :git
 set :repository, "file:///home/git/annette-robinson.git"
-set :local_respository, "git@staging.annette-robinson.com:annette-robinson.git"
+set :local_repository, "git@staging.annette-robinson.com:annette-robinson.git"
 set :scm_username, "annette-robinson"
 set :branch, "dev"
+set :git_enable_submodules, 1
 
 # Passenger setup
 namespace :deploy do
