@@ -116,4 +116,16 @@ class AlbumsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  # POST /albums/1/move
+  # POST /albums/1/move.xml
+  def move
+    @album = Album.find(params[:id])
+    @album.insert_at params[:to]
+
+    respond_to do |format|
+      format.html { redirect_to(@album) }
+      format.xml  { head :ok }
+    end
+  end
 end

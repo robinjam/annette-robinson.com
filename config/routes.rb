@@ -10,6 +10,7 @@ AnnetteRobinson::Application.routes.draw do
       get 'delete'
       post 'promote'
       post 'demote'
+      post 'move'
     end
 
     resources :images, :only => [:new, :create, :destroy],

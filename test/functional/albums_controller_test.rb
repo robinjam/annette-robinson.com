@@ -84,4 +84,14 @@ class AlbumsControllerTest < ActionController::TestCase
 
     assert_redirected_to @album
   end
+
+  test "should move album" do
+    @album_two = Factory(:album)
+    assert_difference('@album.position') do
+      post :move, :id => @album_two.to_param, :to => 1
+      @album.reload
+    end
+
+    assert_redirected_to @album_two
+  end
 end
