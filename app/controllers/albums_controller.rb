@@ -3,8 +3,7 @@ class AlbumsController < ApplicationController
 
   # GET /
   def first
-    flash.keep
-    redirect_to album_url(Album.ordered.first) if Album.count > 0
+    flash.keep and redirect_to album_url(Album.ordered.first) if Album.count > 0
   end
 
   # GET /albums

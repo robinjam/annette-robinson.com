@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
 
   has_attached_file :image, :styles => { :medium => ["1000x400>", :jpg] },
     :default_style => :medium,
-    :url => '/:class/:id/:style/:filename',
+    :url => '/:class/:id/:style.:extension',
     :path => ':rails_root/uploads/:attachment/:id/:style'
 
   validates_presence_of :title
