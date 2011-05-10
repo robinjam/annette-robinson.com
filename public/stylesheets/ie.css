@@ -1,0 +1,13 @@
+.main {
+	width:100%;
+}
+
+.sidebar {
+	display:inline;
+	padding-bottom:30px;
+}
+
+.content {
+	display:inline;
+	zoom:1;
+}

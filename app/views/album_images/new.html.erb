@@ -1,0 +1,10 @@
+<h1>Add Image to Album</h1>
+<p>Please select which image you want to add to the album '<%= @album_image.album.title %>'.</p>
+<%= form_for @album_image do |f| %>
+  <%= f.label :image_id %>
+  <%= f.select :image_id, @album_image.album.images_not_present.collect { |image| [image.title, image.id] } %>
+
+  <%= f.submit 'Save' %>
+<% end %>
+
+<%= link_to 'Back', @album_image.album %>

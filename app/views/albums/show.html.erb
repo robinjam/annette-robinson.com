@@ -1,15 +1,38 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @album.title %>
-</p>
-
-<p>
-  <b>Position:</b>
-  <%= @album.position %>
-</p>
-
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>
+<% content_for :title_extra, " - #{@album.title}" %>
+<% content_for :head_extra do %>
+  <script>
+    $(document).ready(function() {
+      $("<a>&lt; Back</a>")
+        .click(function() {
+          $(".main").animate({
+            scrollLeft: 0
+          }, 1000);
+        })
+        .css("cursor", "pointer")
+        .button()
+        .appendTo(".content");
+    });
+  </script>
+<% end %>
+<% content_for :sidebar do %>
+  <ul>
+    <% Album.ordered.each do |album| %>
+      <li>
+        <%= link_to_unless_current album.title, album %>
+        <%= button_to '✎', edit_album_path(album), :method => :get %>
+        <%= button_to '✗', delete_album_path(album), :method => :get %>
+        <%= button_to '↑', promote_album_path(album) %>
+        <%= button_to '↓', demote_album_path(album) %>
+        <%= button_to '+', new_album_image_path(album), :method => :get %>
+      </li>
+    <% end %>
+    <li style="margin-top: 10px"><%= link_to 'New album...', new_album_path %></li>
+    <li><%= link_to 'Manage images...', images_path %></li>
+  </ul>
+<% end %>
+<% @album.images.each do |image| %>
+  <%= button_to '←', promote_album_image_path(@album, image) %>
+  <%= image_tag image.image.url %>
+  <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
+  <%= button_to '→', demote_album_image_path(@album, image) %>
+<% end %>

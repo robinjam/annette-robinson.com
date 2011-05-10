@@ -69,6 +69,11 @@ class ImagesController < ApplicationController
     end
   end
 
+  # GET /images/1/delete
+  def delete
+    @image = Image.find(params[:id])
+  end
+
   # DELETE /images/1
   # DELETE /images/1.xml
   def destroy

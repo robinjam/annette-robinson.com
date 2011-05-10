@@ -10,4 +10,9 @@ class Album < ActiveRecord::Base
   acts_as_list
 
   scope :ordered, :order => :position
+
+  def images_not_present
+    conditions = ['id NOT IN (?)', album_images.map(&:image_id)] unless album_images.empty?
+    Image.all(:conditions => conditions)
+  end
 end

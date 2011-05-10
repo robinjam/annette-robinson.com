@@ -1,0 +1,7 @@
+<h1>Delete Image</h1>
+<p>Are you sure you want to delete the image '<%= @image.title %>'?</p>
+<p>This image is in <%= pluralize(@image.albums.count, 'album') %>, from which it will be removed if you choose to continue.</p>
+<%= button_to 'Yes, delete this image', @image, :method => :delete %>
+<%= link_to 'Back', images_path %>
+<h2>Image Preview</h2>
+<%= image_tag @image.image.url %>

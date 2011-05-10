@@ -39,6 +39,11 @@ class ImagesControllerTest < ActionController::TestCase
     assert_redirected_to image_path(assigns(:image))
   end
 
+  test "should get delete" do
+    get :delete, :id => @image.to_param
+    assert_response :success
+  end
+
   test "should destroy image" do
     assert_difference('Image.count', -1) do
       delete :destroy, :id => @image.to_param

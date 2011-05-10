@@ -1,4 +1,9 @@
 class AlbumsController < ApplicationController
+  # GET /
+  def first
+    redirect_to album_url(Album.ordered.first) if Album.count > 0
+  end
+
   # GET /albums
   # GET /albums.xml
   def index
@@ -69,6 +74,11 @@ class AlbumsController < ApplicationController
     end
   end
 
+  # GET /albums/1/delete
+  def delete
+    @album = Album.find(params[:id])
+  end
+
   # DELETE /albums/1
   # DELETE /albums/1.xml
   def destroy
@@ -76,7 +86,31 @@ class AlbumsController < ApplicationController
     @album.destroy
 
     respond_to do |format|
-      format.html { redirect_to(albums_url) }
+      format.html { redirect_to(root_url) }
+      format.xml  { head :ok }
+    end
+  end
+
+  # POST /albums/1/promote
+  # POST /albums/1/promote.xml
+  def promote
+    @album = Album.find(params[:id])
+    @album.move_higher
+
+    respond_to do |format|
+      format.html { redirect_to(@album) }
+      format.xml  { head :ok }
+    end
+  end
+
+  # POST /albums/1/demote
+  # POST /albums/1/demote.xml
+  def demote
+    @album = Album.find(params[:id])
+    @album.move_lower
+
+    respond_to do |format|
+      format.html { redirect_to(@album) }
       format.xml  { head :ok }
     end
   end
