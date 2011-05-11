@@ -6,8 +6,13 @@ class AlbumImagesControllerTest < ActionController::TestCase
     log_in
   end
 
+  test "should redirect on get to new with no additional images" do
+    get :new, :album_id => @album_image.album.to_param
+    assert_redirected_to album_path(@album_image.album.to_param)
+  end
+
   test "should get new" do
-    Factory(:image) #TODO: Add additional test without this
+    Factory(:image)
     get :new, :album_id => @album_image.album.to_param
     assert_response :success
   end
