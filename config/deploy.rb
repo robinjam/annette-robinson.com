@@ -25,3 +25,16 @@ namespace :deploy do
     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
+
+# Upload folder symlink
+namespace :customs do
+  task :symlink, :roles => :app do
+    run "ln -nfs #{shared_path}/uploads #{release_path}/uploads"
+  end
+  task :setup, :roles => :app do
+    run "mkdir -p #{shared_path}/uploads"
+  end
+end
+
+before "deploy:symlink", "customs:symlink"
+after "deploy:setup", "customs:setup"
