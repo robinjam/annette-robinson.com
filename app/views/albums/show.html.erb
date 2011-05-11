@@ -85,13 +85,13 @@
     <li id="image-<%= image.to_param %>">
     <div class="image">
       <% if logged_in? %>
-        <%= button_to '←', promote_album_image_path(@album, image), :class => 'standard_controls' %>
+        <%= button_to '←', promote_album_image_path(@album, image), :class => 'standard_controls', :title => 'Move this image to the left' %>
       <% end %>
-      <%= image_tag image.image.url %>
+      <%= image_tag image.image.url, :title => image.title %>
       <% if logged_in? %>
-        <%= image_tag('close.png', :class => 'close-button') %>
-        <%= button_to '✗', album_image_path(@album, image), :method => :delete, :class => 'standard_controls' %>
-        <%= button_to '→', demote_album_image_path(@album, image), :class => 'standard_controls' %>
+        <%= image_tag('close.png', :class => 'close-button', :title => 'Remove this image from this album') %>
+        <%= button_to '✗', album_image_path(@album, image), :method => :delete, :class => 'standard_controls', :title => 'Remove this image from this album' %>
+        <%= button_to '→', demote_album_image_path(@album, image), :class => 'standard_controls', :title => 'Move this image to the right' %>
       <% end %>
     </div>
     </li>
