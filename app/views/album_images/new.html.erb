@@ -6,6 +6,7 @@
         $("img#preview").attr("src", "/images/" + $(this).find("option:selected").attr("value") + "/medium");
       });
       $("#album_image_image_id").change();
+      $("img#preview").show();
     });
   </script>
 <% end %>

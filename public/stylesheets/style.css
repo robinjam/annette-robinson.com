@@ -172,3 +172,7 @@ form p label {
 .hide-me {
   display: none;
 }
+
+img#preview {
+  display: none;
+}

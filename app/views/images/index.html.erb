@@ -1,11 +1,31 @@
+<% content_for :head_extra do %>
+  <script>
+    $(document).ready(function() {
+      $("tr.image").hover(function() {
+        $("img#preview").show();
+        $("img#preview").attr("src", "/images/" + $(this).attr("data-imageid") + "/medium");
+      });
+      $(document).mousemove(function(e) {
+        $("img#preview").css({
+          top: (e.pageY - $("img#preview").height()/2) + "px",
+          left: (e.pageX + 10) + "px"
+        });
+      });
+      $("table#images").hover(null, function(e) {
+        $("img#preview").hide().css("opacity", 0.8);
+      });
+    });
+  </script>
+<% end %>
 <% content_for :sidebar do %>
   <ul>
     <li><%= link_to 'Manage Albums...', root_path %></li>
   </ul>
 <% end %>
+<img id="preview" style="position: absolute">
 <h1>Listing images</h1>
 
-<table>
+<table id="images">
   <tr>
     <th>Title</th>
     <th></th>
@@ -14,7 +34,7 @@
   </tr>
 
 <% @images.each do |image| %>
-  <tr>
+  <tr class="image" data-imageid="<%= image.id %>">
     <td><%= image.title %> (used in <%= pluralize(image.albums.count, 'album') %>)</td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
