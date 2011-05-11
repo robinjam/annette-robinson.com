@@ -3,7 +3,7 @@
 <p>This image is in <%= pluralize(@image.albums.count, 'album') %>, from which it will be removed if you choose to continue.</p>
 <p>
   <%= button_to 'Yes, delete this image', @image, :method => :delete %>
-  <%= link_to 'Back', images_path %>
+  <%= link_to 'Cancel', images_path %>
 </p>
 <h2>Image Preview</h2>
 <%= image_tag @image.image.url %>

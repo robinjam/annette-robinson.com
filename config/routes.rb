@@ -27,7 +27,10 @@ AnnetteRobinson::Application.routes.draw do
 
   match 'login' => 'sessions#new', :via => :get
   match 'login' => 'sessions#create', :via => :post
-  match 'logout' => 'sessions#destroy'
+  match 'logout' => 'sessions#destroy', :via => :get
+
+  match 'contact' => 'pages#contact' ,:via => :get
+  match 'contact' => 'pages#send_mail', :via => :post
 
   root :to => 'albums#first'
 end

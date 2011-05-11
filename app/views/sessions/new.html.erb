@@ -1,28 +1,16 @@
 <h1>Log in</h1>
 <%= form_tag '/login' do %>
-  <table>
-    <tr>
-      <td>
-        <%= label_tag :username %>
-      </td>
-      <td>
-        <%= text_field_tag :username %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <%= label_tag :password %>
-      </td>
-      <td>
-        <%= password_field_tag :password %>
-      </td>
-    </tr>
-    <tr>
-      <td></td>
-      <td>
-        <%= submit_tag 'Log in' %>
-        <%= link_to 'Cancel', root_path %>
-      </td>
-    </tr>
-  </table>
+  <p>
+    <%= label_tag :username %>
+    <%= text_field_tag :username %>
+  </p>
+  <p>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </p>
+  <p>
+    <label></label>
+    <%= submit_tag 'Log in' %> or
+    <%= link_to 'Cancel', root_path %>
+  </p>
 <% end %>

@@ -1,5 +1,7 @@
 <h1>Delete album</h1>
 <p>Are you sure you want to delete the album '<%= @album.title %>'?</p>
 <p>Please note that none of the images in the album will be deleted in the process.</p>
-<%= button_to 'Yes, delete the album', @album, :method => :delete %>
-<%= link_to 'Cancel', @album %>
+<p>
+  <%= button_to 'Yes, delete the album', @album, :method => :delete %>
+  <%= link_to 'Cancel', @album %>
+</p>

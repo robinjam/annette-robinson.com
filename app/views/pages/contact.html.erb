@@ -1,0 +1,28 @@
+<% content_for :sidebar do %>
+  <li><%= link_to 'Back', root_path %></li>
+<% end %>
+<h1>Contact Me</h1>
+<%= form_tag do %>
+  <p>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, @name %>
+  </p>
+  <p>
+    <%= label_tag :email %>
+    <%= text_field_tag :email, @email %>
+  </p>
+  <p class="hide-me">
+    <%= label_tag :website %>
+    <%= text_field_tag :website %>
+    Please leave this blank.
+  </p>
+  <p>
+    <%= label_tag :message %>
+    <%= text_area_tag :message, @message, :rows => 10, :cols => 50 %>
+  </p>
+  <p>
+    <label></label>
+    <%= submit_tag 'Send' %> or
+    <%= link_to 'Cancel', root_path %>
+  </p>
+<% end %>
