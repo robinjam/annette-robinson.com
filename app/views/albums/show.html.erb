@@ -16,11 +16,20 @@
           update: function(event, ui) {
             id = ui.item.attr("id").substring(6);
             index = parseInt(ui.item.index()) + 1;
-            $.post("/albums/" + id + "/move", { to: index })
-              .error(function() { location.reload(); })
+            $.post("/albums/" + id + "/move.xml", { to: index })
+              .error(function() { location.reload(); });
           }
         }).disableSelection();
-        $(".expendable").hide();
+        $("#images").sortable({
+          opacity: 0.6,
+          update: function(event, ui) {
+            id = ui.item.attr("id").substring(6);
+            index = parseInt(ui.item.index()) + 1;
+            $.post("/albums/<%= @album.id %>/images/" + id + "/move.xml", { to: index })
+              .error(function() { location.reload(); });
+          }
+        }).disableSelection();
+        $(".rearrange").hide();
       <% end %>
     });
   </script>
@@ -28,13 +37,13 @@
 <% content_for :sidebar do %>
   <ul id="albums">
     <% Album.ordered.each do |album| %>
-      <li id="album-<%= album.id %>">
+      <li id="album-<%= album.to_param %>">
         <%= link_to_unless_current album.title, album %>
         <% if logged_in? %>
           <%= button_to '✎', edit_album_path(album), :method => :get %>
           <%= button_to '✗', delete_album_path(album), :method => :get %>
-          <%= button_to '↑', promote_album_path(album), :class => 'expendable' %>
-          <%= button_to '↓', demote_album_path(album), :class => 'expendable' %>
+          <%= button_to '↑', promote_album_path(album), :class => 'rearrange' %>
+          <%= button_to '↓', demote_album_path(album), :class => 'rearrange' %>
           <%= button_to '+', new_album_image_path(album), :method => :get %>
         <% end %>
       </li>
@@ -45,13 +54,17 @@
     <li><%= link_to 'Manage images...', images_path %></li>
   <% end %>
 <% end %>
-<% @album.images.each do |image| %>
-  <% if logged_in? %>
-    <%= button_to '←', promote_album_image_path(@album, image) %>
+<ul id="images">
+  <% @album.images.each do |image| %>
+    <li id="image-<%= image.to_param %>">
+      <% if logged_in? %>
+        <%= button_to '←', promote_album_image_path(@album, image), :class => 'rearrange' %>
+      <% end %>
+      <%= image_tag image.image.url %>
+      <% if logged_in? %>
+        <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
+        <%= button_to '→', demote_album_image_path(@album, image), :class => 'rearrange' %>
+      <% end %>
+    </li>
   <% end %>
-  <%= image_tag image.image.url %>
-  <% if logged_in? %>
-    <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
-    <%= button_to '→', demote_album_image_path(@album, image) %>
-  <% end %>
-<% end %>
+</ul>

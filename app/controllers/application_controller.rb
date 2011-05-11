@@ -10,6 +10,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to root_url, :alert => 'You are not authorized to do that.' unless logged_in?
+    unless logged_in?
+      respond_to do |format|
+        format.html { redirect_to root_url, :alert => 'You are not authorized to do that.' }
+        format.xml  { head :forbidden }
+      end
+    end
   end
 end

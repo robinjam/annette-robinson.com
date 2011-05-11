@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Annette Robinson - Photography & Artwork<%= yield :title_extra %></title>
-  <%= stylesheet_link_tag 'style' %>
-  <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.12.custom' %>
-  <!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-  <%= yield :head_extra %>
-</head>
-<body>
-
-  <div class="top"></div>
-  <div class="main">
-    <div class="sidebar">
-      <h1>Annette<br>Robinson</h1>
-      <% unless flash[:notice].blank? %>
-        <p class="notice"><%= flash[:notice] %></p>
-      <% end %>
-      <% unless flash[:alert].blank? %>
-        <p class="alert"><%= flash[:alert] %></p>
-      <% end %>
-      <ul>
-        <%= yield :sidebar %>
-        <% if logged_in? %>
-          <li><%= link_to 'Log out', logout_path %></li>
+  <head>
+    <title>Annette Robinson - Photography & Artwork<%= yield :title_extra %></title>
+    <%= stylesheet_link_tag 'style' %>
+    <%= stylesheet_link_tag 'ui-lightness/jquery-ui-1.8.12.custom' %>
+    <!--[if lt IE 8]><%= stylesheet_link_tag 'ie' %><![endif]-->
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+    <meta name="description" content="The online portfolio of Annette Robinson - Artist, Designer, and Photographer.">
+    <%= yield :head_extra %>
+  </head>
+  <body>
+    <div class="top"></div>
+    <div class="main">
+      <div class="sidebar">
+        <h1>Annette<br>Robinson</h1>
+        <% unless flash[:notice].blank? %>
+          <p class="notice"><%= flash[:notice] %></p>
         <% end %>
-      </ul>
+        <% unless flash[:alert].blank? %>
+          <p class="alert"><%= flash[:alert] %></p>
+        <% end %>
+        <ul>
+          <%= yield :sidebar %>
+          <% if logged_in? %>
+            <li><%= link_to 'Log out', logout_path %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="content">
+        <%= yield %>
+      </div>
     </div>
-    <div class="content">
-      <%= yield %>
+    <div class="footer">
+      <p>&copy; 2011 Annette Robinson. It is an offence to copy any content from this website without permission.</p>
     </div>
-  </div>
-  <div class="footer">
-    <p>&copy; 2011 Annette Robinson. It is an offence to copy any content from this website without permission.</p>
-  </div>
-
-</body>
+  </body>
 </html>
