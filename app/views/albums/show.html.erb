@@ -29,7 +29,21 @@
               .error(function() { location.reload(); });
           }
         }).disableSelection();
-        $(".rearrange").hide();
+        $(".standard_controls").hide();
+        $("#images li").hover(
+          function() {
+            $(this).find(".close-button").css("visibility", "visible");
+          },
+          function() {
+            $(this).find(".close-button").css("visibility", "hidden");
+          }
+          )
+        $("#images li .close-button").click(function() {
+          var image = $(this).parent().parent();
+          $.post("/albums/<%= @album.id %>/images/" + image.attr("id").substring(6) + ".xml", { _method: "delete" })
+            .error(function() { location.reload(); });
+          $(image).remove();
+        });
       <% end %>
     });
   </script>
@@ -42,8 +56,8 @@
         <% if logged_in? %>
           <%= button_to '✎', edit_album_path(album), :method => :get %>
           <%= button_to '✗', delete_album_path(album), :method => :get %>
-          <%= button_to '↑', promote_album_path(album), :class => 'rearrange' %>
-          <%= button_to '↓', demote_album_path(album), :class => 'rearrange' %>
+          <%= button_to '↑', promote_album_path(album), :class => 'standard_controls' %>
+          <%= button_to '↓', demote_album_path(album), :class => 'standard_controls' %>
           <%= button_to '+', new_album_image_path(album), :method => :get %>
         <% end %>
       </li>
@@ -57,14 +71,17 @@
 <ul id="images">
   <% @album.images.each do |image| %>
     <li id="image-<%= image.to_param %>">
+    <div class="image">
       <% if logged_in? %>
-        <%= button_to '←', promote_album_image_path(@album, image), :class => 'rearrange' %>
+        <%= button_to '←', promote_album_image_path(@album, image), :class => 'standard_controls' %>
       <% end %>
       <%= image_tag image.image.url %>
       <% if logged_in? %>
-        <%= button_to '✗', album_image_path(@album, image), :method => :delete %>
-        <%= button_to '→', demote_album_image_path(@album, image), :class => 'rearrange' %>
+        <%= image_tag('close.png', :class => 'close-button') %>
+        <%= button_to '✗', album_image_path(@album, image), :method => :delete, :class => 'standard_controls' %>
+        <%= button_to '→', demote_album_image_path(@album, image), :class => 'standard_controls' %>
       <% end %>
+    </div>
     </li>
   <% end %>
 </ul>

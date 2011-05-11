@@ -143,3 +143,17 @@ ul#images {
 ul#images li {
   display: table-cell;
 }
+
+div.image {
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 0 !important;
+  margin: 0;
+  visibility: hidden;
+  cursor: pointer;
+}
