@@ -70,7 +70,17 @@ a {
 
 .sidebar li input {
   vertical-align: top;
+  font-size: 18px;
   margin: 0;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: #888;
+}
+
+.sidebar li input:hover {
+  color: #333;
 }
 
 .sidebar a {
@@ -104,18 +114,6 @@ a {
   padding:5px;
   vertical-align:middle;
 }
-/*
-.sortable {
-  list-style-type:none;
-  margin:0;
-  padding:0;
-}
-
-.sortable li {
-  margin:3px;
-  padding:5px;
-  cursor:pointer;
-}*/
 
 .button_to, .button_to div {
   display: inline;
@@ -136,6 +134,7 @@ a {
 ul#images {
   list-style: none;
   padding: 0;
+  margin: 0;
   display: inline-table;
   vertical-align: middle;
 }

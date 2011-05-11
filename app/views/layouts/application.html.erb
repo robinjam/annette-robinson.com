@@ -24,7 +24,7 @@
         <ul>
           <%= yield :sidebar %>
           <% if logged_in? %>
-            <li><%= link_to 'Log out', logout_path %></li>
+            <li style="margin-top: 10px"><%= link_to 'Log out', logout_path %></li>
           <% end %>
         </ul>
       </div>

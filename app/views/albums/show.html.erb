@@ -29,7 +29,7 @@
               .error(function() { location.reload(); });
           }
         }).disableSelection();
-        $(".standard_controls").hide();
+        $(".standard_controls, .extra-buttons").hide();
         $("#images li").hover(
           function() {
             $(this).find(".close-button").css("visibility", "visible");
@@ -44,6 +44,14 @@
             .error(function() { location.reload(); });
           $(image).remove();
         });
+        $(".sidebar").hover(
+          function() {
+            $(".extra-buttons").show();
+          },
+          function() {
+            $(".extra-buttons").hide();
+          }
+        );
       <% end %>
     });
   </script>
@@ -54,18 +62,22 @@
       <li id="album-<%= album.to_param %>">
         <%= link_to_unless_current album.title, album %>
         <% if logged_in? %>
-          <%= button_to '✎', edit_album_path(album), :method => :get %>
-          <%= button_to '✗', delete_album_path(album), :method => :get %>
-          <%= button_to '↑', promote_album_path(album), :class => 'standard_controls' %>
-          <%= button_to '↓', demote_album_path(album), :class => 'standard_controls' %>
-          <%= button_to '+', new_album_image_path(album), :method => :get %>
+          <span class="extra-buttons">
+            <%= button_to '✎', edit_album_path(album), :method => :get, :title => 'Rename this album...' %>
+            <%= button_to '✗', delete_album_path(album), :method => :get, :title => 'Delete this album...' %>
+            <%= button_to '↑', promote_album_path(album), :class => 'standard_controls', :title => 'Move this album up' %>
+            <%= button_to '↓', demote_album_path(album), :class => 'standard_controls', :title => 'Move this album down' %>
+            <%= button_to '+', new_album_image_path(album), :method => :get, :title => 'Add another image to this album...' %>
+          </span>
         <% end %>
       </li>
     <% end %>
   </ul>
   <% if logged_in? %>
-    <li style="margin-top: 10px"><%= link_to 'New album...', new_album_path %></li>
-    <li><%= link_to 'Manage images...', images_path %></li>
+    <span class="extra-buttons">
+      <li style="margin-top: 10px"><%= link_to 'New album...', new_album_path %></li>
+      <li><%= link_to 'Manage images...', images_path %></li>
+    </span>
   <% end %>
 <% end %>
 <ul id="images">
