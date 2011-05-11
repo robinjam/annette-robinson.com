@@ -1,10 +1,23 @@
+<% content_for :head_extra do %>
+  <script>
+    $(document).ready(function() {
+      $("<h2>Preview</h2><img id=\"preview\">").appendTo("div.content");
+      $("#album_image_image_id").change(function() {
+        $("img#preview").attr("src", "/images/" + $(this).find("option:selected").attr("value") + "/medium");
+      });
+      $("#album_image_image_id").change();
+    });
+  </script>
+<% end %>
 <h1>Add Image to Album</h1>
 <p>Please select which image you want to add to the album '<%= @album_image.album.title %>'.</p>
 <%= form_for @album_image do |f| %>
-  <%= f.label :image_id %>
-  <%= f.select :image_id, @album_image.album.images_not_present.collect { |image| [image.title, image.id] } %>
-
-  <%= f.submit 'Save' %>
+  <p>
+    <%= f.label :image_id %>
+    <%= f.select :image_id, @album_image.album.images_not_present.collect { |image| [image.title, image.id] } %>
+  </p>
+  <p>
+    <%= f.submit 'Save' %>
+    <%= link_to 'Back', @album_image.album %>
+  </p>
 <% end %>
-
-<%= link_to 'Back', @album_image.album %>
