@@ -9,6 +9,11 @@
     <%= csrf_meta_tag %>
     <meta name="description" content="The online portfolio of Annette Robinson - Artist, Designer, and Photographer.">
     <%= yield :head_extra %>
+    <script>
+      $(document).ready(function() {
+        $(".notice, .alert").fadeOut(3000, "easeInExpo");
+      });
+    </script>
   </head>
   <body>
     <div class="top"></div>
