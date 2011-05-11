@@ -18,6 +18,7 @@ AnnetteRobinson::Application.routes.draw do
       member do
         post 'promote'
         post 'demote'
+        post 'move'
       end
     end
   end

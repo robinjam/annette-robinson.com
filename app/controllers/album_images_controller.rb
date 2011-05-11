@@ -1,6 +1,6 @@
 class AlbumImagesController < ApplicationController
   before_filter :authorize
-  before_filter :fetch_album_image, :only => [:destroy, :promote, :demote]
+  before_filter :fetch_album_image, :only => [:destroy, :promote, :demote, :move]
 
   # GET /albums/1/images/new
   # GET /albums/1/images/new.xml
@@ -59,6 +59,17 @@ class AlbumImagesController < ApplicationController
   # POST /albums/1/images/1/demote.xml
   def demote
     @album_image.move_lower
+
+    respond_to do |format|
+      format.html { redirect_to(@album_image.album) }
+      format.xml  { head :ok }
+    end
+  end
+
+  # POST /albums/1/images/1/move
+  # POST /albums/1/images/1/move.xml
+  def move
+    @album_image.insert_at params[:to]
 
     respond_to do |format|
       format.html { redirect_to(@album_image.album) }

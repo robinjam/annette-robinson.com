@@ -33,7 +33,7 @@ class AlbumImagesControllerTest < ActionController::TestCase
   test "should promote album image" do
     @album_image_two = Factory(:album_image, :album => @album_image.album)
     assert_difference('@album_image_two.position', -1) do
-      post :promote, :album_id => @album_image_two.album.to_param, :id => @album_image_two.to_param
+      post :promote, :album_id => @album_image_two.album.to_param, :id => @album_image_two.image.to_param
       @album_image_two.reload
     end
 
@@ -43,10 +43,20 @@ class AlbumImagesControllerTest < ActionController::TestCase
   test "should demote album image" do
     @album_image_two = Factory(:album_image, :album => @album_image.album)
     assert_difference('@album_image.position') do
-      post :demote, :album_id => @album_image.album.to_param, :id => @album_image.to_param
+      post :demote, :album_id => @album_image.album.to_param, :id => @album_image.image.to_param
       @album_image.reload
     end
 
     assert_redirected_to @album_image.album
+  end
+
+  test "should move album image" do
+    @album_image_two = Factory(:album_image, :album => @album_image.album)
+    assert_difference('@album_image.position') do
+      post :move, :album_id => @album_image_two.album.to_param, :id => @album_image_two.image.to_param, :to => 1
+      @album_image.reload
+    end
+
+    assert_redirected_to @album_image_two.album
   end
 end
