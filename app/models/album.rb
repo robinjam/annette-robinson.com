@@ -13,6 +13,6 @@ class Album < ActiveRecord::Base
 
   def images_not_present
     conditions = ['id NOT IN (?)', album_images.map(&:image_id)] unless album_images.empty?
-    Image.all(:conditions => conditions)
+    Image.all(:conditions => conditions, :order => 'title')
   end
 end
