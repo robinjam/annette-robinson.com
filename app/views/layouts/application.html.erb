@@ -12,6 +12,9 @@
     <script>
       $(document).ready(function() {
         $(".notice, .alert").fadeOut(3000, "easeInExpo");
+        $("form").submit(function() {
+          $(this).find("input[type=submit]").attr("disabled", "disabled");
+        });
       });
     </script>
   </head>
