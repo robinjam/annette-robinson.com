@@ -57,7 +57,8 @@
   </script>
 <% end %>
 <% content_for :sidebar do %>
-  <ul id="albums">
+  <li>
+    <ul id="albums">
     <% Album.ordered.each do |album| %>
       <li id="album-<%= album.to_param %>">
         <%= link_to_unless_current album.title, album %>
@@ -73,6 +74,7 @@
       </li>
     <% end %>
   </ul>
+  </li>
   <li style="margin-top: 10px;"><%= link_to 'Contact Me', contact_path %></li>
   <% if logged_in? %>
     <span class="extra-buttons">
@@ -88,7 +90,7 @@
       <% if logged_in? %>
         <%= button_to '←', promote_album_image_path(@album, image), :class => 'standard_controls', :title => 'Move this image to the left' %>
       <% end %>
-      <%= image_tag image.image.url, :title => image.title %>
+      <%= image_tag image.image.url, :title => image.title, :alt => image.title %>
       <% if logged_in? %>
         <%= image_tag('close.png', :class => 'close-button', :title => 'Remove this image from this album') %>
         <%= button_to '✗', album_image_path(@album, image), :method => :delete, :class => 'standard_controls', :title => 'Remove this image from this album' %>
