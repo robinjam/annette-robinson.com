@@ -26,13 +26,20 @@ namespace :deploy do
   end
 end
 
+# Paperclip
+namespace :paperclip do
+  task :refresh, :roles => :app do
+    run "cd #{current_path} && bundle exec rake paperclip:refresh CLASS=Image RAILS_ENV=production"
+  end
+end
+
 # Upload folder symlink
 namespace :customs do
   task :symlink, :roles => :app do
-    run "ln -nfs #{shared_path}/uploads #{release_path}/uploads"
+    run "ln -nfs #{shared_path}/uploads/images #{release_path}/uploads/images"
   end
   task :setup, :roles => :app do
-    run "mkdir -p #{shared_path}/uploads"
+    run "mkdir -p #{shared_path}/uploads/images"
   end
 end
 

@@ -1,10 +1,20 @@
+require 'paperclip_processors/watermark.rb'
+
 class Image < ActiveRecord::Base
   has_many :album_images, :dependent => :destroy
   has_many :albums, :through => :album_images
 
   attr_accessible :title, :image
 
-  has_attached_file :image, :styles => { :medium => ["1000x400>", :jpg] },
+  has_attached_file :image,
+    :processors => [:watermark],
+    :styles => {
+      :medium => {
+        :geometry => "1000x400>",
+        :format => 'jpg',
+        :watermark_path => "#{Rails.root}/uploads/watermark.png"
+      }
+    },
     :default_style => :medium,
     :url => '/:class/:id/:style.:extension',
     :path => ':rails_root/uploads/:attachment/:id/:style'
