@@ -176,3 +176,7 @@ form p label {
 img#preview {
   display: none;
 }
+
+.small {
+  font-size: 80%;
+}
