@@ -157,26 +157,18 @@ div.image {
   cursor: pointer;
 }
 
-form p {
-  display: table-row;
-}
-form p input, form p label, form p select {
-  display: table-cell;
-  vertical-align: middle;
-  margin: 5px 0;
-}
-form p label {
-  text-align: right;
-  padding-right: 5px;
-}
-.hide-me {
-  display: none;
-}
-
 img#preview {
   display: none;
 }
 
 .small {
   font-size: 80%;
+}
+
+label {
+  display: block;
+}
+
+.field_with_errors {
+  color: red;
 }
