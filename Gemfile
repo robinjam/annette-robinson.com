@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'paperclip'
 gem 'capistrano'
 gem 'capistrano-ext'
+gem 'rack-recaptcha', :require => 'rack/recaptcha'
 
 group :test do
   gem 'shoulda'

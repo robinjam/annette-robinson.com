@@ -9,7 +9,9 @@
     <%= password_field_tag :password %>
   </p>
   <p>
-    <label></label>
+    <%= raw recaptcha_tag(:challenge) %>
+  </p>
+  <p>
     <%= submit_tag 'Log in' %> or
     <%= link_to 'Cancel', root_path %>
   </p>
