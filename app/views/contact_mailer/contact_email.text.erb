@@ -1,5 +1,5 @@
 You have received the following message from a visitor to annette-robinson.com.
 
-From: <%= @message.name %> (<%= @message.email %>)
+From: <%= raw @message.name %> (<%= raw @message.email %>)
 
-<%= @message.message %>
+<%= raw @message.message %>
