@@ -15,8 +15,13 @@ gem 'paperclip'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
+gem 'thin'
 
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'
+end
+
+group :production do
+  gem 'pg'
 end
