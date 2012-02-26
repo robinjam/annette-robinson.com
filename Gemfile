@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
+gem 'aws-sdk'
 
 group :test do
 	gem 'shoulda'

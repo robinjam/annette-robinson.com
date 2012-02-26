@@ -1,9 +1,10 @@
 <% content_for :head_extra do %>
+  <script src="/images.js"></script>
   <script>
     $(document).ready(function() {
       $("<h2>Preview</h2><img id=\"preview\">").appendTo("div.content");
       $("#album_image_image_id").change(function() {
-        $("img#preview").attr("src", "/images/" + $(this).find("option:selected").attr("value") + "/medium");
+        $("img#preview").attr("src", image_urls[$(this).val()]);
       });
       $("#album_image_image_id").change();
       $("img#preview").show();

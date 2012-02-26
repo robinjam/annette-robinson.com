@@ -1,9 +1,10 @@
 <% content_for :head_extra do %>
+  <script src="/images.js"></script>
   <script>
     $(document).ready(function() {
       $("tr.image").hover(function() {
         $("img#preview").show();
-        $("img#preview").attr("src", "/images/" + $(this).attr("data-imageid") + "/medium");
+        $("img#preview").attr("src", image_urls[$(this).attr("data-imageid")]);
       });
       $(document).mousemove(function(e) {
         $("img#preview").css({

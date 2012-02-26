@@ -1,0 +1,1 @@
+var image_urls = { <%= Image.all.collect { |i| "#{i.id}: \"#{i.image.url}\"" }.join(", ").html_safe %> };
