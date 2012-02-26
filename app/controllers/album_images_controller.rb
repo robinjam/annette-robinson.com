@@ -3,7 +3,7 @@ class AlbumImagesController < ApplicationController
   before_filter :fetch_album_image, :only => [:destroy, :promote, :demote, :move]
 
   # GET /albums/1/images/new
-  # GET /albums/1/images/new.xml
+  # GET /albums/1/images/new.json
   def new
     @album_image = AlbumImage.new
     @album_image.album = Album.find(params[:album_id])
@@ -11,12 +11,12 @@ class AlbumImagesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @album_image }
+      format.json  { render :json => @album_image }
     end
   end
 
   # POST /albums/1/images
-  # POST /albums/1/images.xml
+  # POST /albums/1/images.json
   def create
     @album_image = AlbumImage.new
     @album_image.album = Album.find(params[:album_id])
@@ -25,55 +25,55 @@ class AlbumImagesController < ApplicationController
     respond_to do |format|
       if @album_image.save
         format.html { redirect_to(@album_image.album, :notice => 'Image was successfully added to album.') }
-        format.xml  { render :xml => @album_image, :status => :created, :location => @album_image.album }
+        format.json  { render :json => @album_image, :status => :created, :location => @album_image.album }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @album_image.errors, :status => :unprocessable_entity }
+        format.json  { render :json => @album_image.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # DELETE /albums/1/images/1
-  # DELETE /albums/1/images/1.xml
+  # DELETE /albums/1/images/1.json
   def destroy
     @album_image.destroy
 
     respond_to do |format|
       format.html { redirect_to album_url(@album_image.album) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 
   # POST /albums/1/images/1/promote
-  # POST /albums/1/images/1/promote.xml
+  # POST /albums/1/images/1/promote.json
   def promote
     @album_image.move_higher
 
     respond_to do |format|
       format.html { redirect_to(@album_image.album) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 
   # POST /albums/1/images/1/demote
-  # POST /albums/1/images/1/demote.xml
+  # POST /albums/1/images/1/demote.json
   def demote
     @album_image.move_lower
 
     respond_to do |format|
       format.html { redirect_to(@album_image.album) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 
   # POST /albums/1/images/1/move
-  # POST /albums/1/images/1/move.xml
+  # POST /albums/1/images/1/move.json
   def move
-    @album_image.insert_at params[:to]
+    @album_image.insert_at params[:to].to_i
 
     respond_to do |format|
       format.html { redirect_to(@album_image.album) }
-      format.xml  { head :ok }
+      format.json  { head :ok }
     end
   end
 

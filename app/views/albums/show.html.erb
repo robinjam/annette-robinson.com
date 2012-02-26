@@ -16,7 +16,7 @@
           update: function(event, ui) {
             id = ui.item.attr("id").substring(6);
             index = parseInt(ui.item.index()) + 1;
-            $.post("/albums/" + id + "/move.xml", { to: index })
+            $.post("/albums/" + id + "/move.json", { to: index }, null, 'html')
               .error(function() { location.reload(); });
           }
         }).disableSelection();
@@ -25,7 +25,7 @@
           update: function(event, ui) {
             id = ui.item.attr("id").substring(6);
             index = parseInt(ui.item.index()) + 1;
-            $.post("/albums/<%= @album.id %>/images/" + id + "/move.xml", { to: index })
+            $.post("/albums/<%= @album.id %>/images/" + id + "/move.json", { to: index }, null, 'html')
               .error(function() { location.reload(); });
           }
         }).disableSelection();
@@ -40,7 +40,7 @@
           )
         $("#images li .close-button").click(function() {
           var image = $(this).parent().parent();
-          $.post("/albums/<%= @album.id %>/images/" + image.attr("id").substring(6) + ".xml", { _method: "delete" })
+          $.post("/albums/<%= @album.id %>/images/" + image.attr("id").substring(6) + ".json", { _method: "delete" }, null, 'html')
             .error(function() { location.reload(); });
           $(image).remove();
         });

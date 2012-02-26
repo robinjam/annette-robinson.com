@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     unless logged_in?
       respond_to do |format|
         format.html { redirect_to root_url, :alert => 'You are not authorized to do that.' }
-        format.xml  { head :forbidden }
+        format.json  { head :forbidden }
       end
     end
   end
