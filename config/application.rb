@@ -39,8 +39,6 @@ module AnnetteRobinson
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    # Configure reCAPTCHA
-    config.middleware.use Rack::Recaptcha, :public_key => '6LexmMQSAAAAAJ7Q5X3qqmEcNvKf6HCoyeUhcLqr', :private_key => '6LexmMQSAAAAACkNBGuAG_8-2NnDM6x9e7-8hBxb'
     # Use SQL instead of Active Record's schema dumper when creating the database.
     # This is necessary if your schema can't be completely dumped by the schema dumper,
     # like if you have constraints or database-specific column types

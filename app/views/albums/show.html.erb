@@ -11,7 +11,7 @@
         .css("cursor", "pointer")
         .button()
         .appendTo(".content");
-      <% if logged_in? %>
+      <% if admin? %>
         $("#albums").sortable({
           update: function(event, ui) {
             id = ui.item.attr("id").substring(6);
@@ -62,7 +62,7 @@
     <% Album.ordered.each do |album| %>
       <li id="album-<%= album.to_param %>">
         <%= link_to_unless_current album.title, album %>
-        <% if logged_in? %>
+        <% if admin? %>
           <span class="extra-buttons">
             <%= button_to '✎', edit_album_path(album), :method => :get, :title => 'Rename this album...' %>
             <%= button_to '✗', delete_album_path(album), :method => :get, :title => 'Delete this album...' %>
@@ -76,7 +76,7 @@
   </ul>
   </li>
   <li style="margin-top: 10px;"><%= link_to 'Contact Me', new_message_path, :class => 'small' %></li>
-  <% if logged_in? %>
+  <% if admin? %>
     <span class="extra-buttons">
       <li style="margin-top: 10px"><%= link_to 'New album...', new_album_path %></li>
       <li><%= link_to 'Manage images...', images_path %></li>
@@ -87,11 +87,11 @@
   <% @album.images.each do |image| %>
     <li id="image-<%= image.to_param %>">
     <div class="image">
-      <% if logged_in? %>
+      <% if admin? %>
         <%= button_to '←', promote_album_image_path(@album, image), :class => 'standard_controls', :title => 'Move this image to the left' %>
       <% end %>
       <%= image_tag image.image.url, :title => image.title, :alt => image.title %>
-      <% if logged_in? %>
+      <% if admin? %>
         <%= image_tag('close.png', :class => 'close-button', :title => 'Remove this image from this album') %>
         <%= button_to '✗', album_image_path(@album, image), :method => :delete, :class => 'standard_controls', :title => 'Remove this image from this album' %>
         <%= button_to '→', demote_album_image_path(@album, image), :class => 'standard_controls', :title => 'Move this image to the right' %>

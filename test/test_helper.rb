@@ -13,6 +13,6 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def log_in
-    session[:logged_in] = true
+    session[:user_id] = Factory(:user, admin: true).id
   end
 end

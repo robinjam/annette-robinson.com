@@ -12,8 +12,8 @@ end
 gem 'jquery-rails'
 
 gem 'paperclip'
-gem 'rack-recaptcha', require: 'rack/recaptcha'
 gem 'acts_as_list'
+gem 'omniauth-facebook'
 
 group :test do
 	gem 'shoulda'

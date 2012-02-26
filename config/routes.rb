@@ -27,9 +27,9 @@ AnnetteRobinson::Application.routes.draw do
 
   match 'images/:id/:style', :controller => 'images', :action => 'download', :via => :get
 
-  match 'login' => 'sessions#new', :via => :get
-  match 'login' => 'sessions#create', :via => :post
   match 'logout' => 'sessions#destroy', :via => :get
+
+  match '/auth/:provider/callback', to: 'sessions#create'
 
   root :to => 'albums#first'
 end

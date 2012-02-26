@@ -1,19 +1,13 @@
 class SessionsController < ApplicationController
   def create
-    username = params[:username]
-    password = params[:password]
-
-    if username == 'annette' && Digest::SHA512.hexdigest("#{password}:cheesecake") == '788ff873910337c9d9443bbd6e9c2b99d7c8647c7571873a3ace3b51e23da595e54d60a40c7e317cd1ff73ee286d1e283af8c13e4145bfbc282fbd57ca83601d' && recaptcha_valid? # TODO: Move to config file?
-      session[:logged_in] = true
-      redirect_to root_url, :notice => 'Login successful.'
-    else
-      flash.now[:alert] = 'Incorrect username, password, or CAPTCHA response.'
-      render :new
-    end
+    omniauth = request.env['omniauth.auth']
+    user = User.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
+    session[:user_id] = user.id
+    redirect_to root_url, notice: 'Logged in successfully.'
   end
 
   def destroy
-    session[:logged_in] = false
+    session[:user_id] = nil
     redirect_to root_url, :notice => 'You have logged out.'
   end
 end

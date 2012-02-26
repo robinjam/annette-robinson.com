@@ -1,18 +1,20 @@
 class ApplicationController < ActionController::Base
-  include Rack::Recaptcha::Helpers
-
   protect_from_forgery
 
-  helper_method :logged_in?
+  helper_method :logged_in?, :admin?
 
   protected
 
   def logged_in?
-    return session[:logged_in]
+    return !User.find_by_id(session[:user_id]).nil?
+  end
+
+  def admin?
+    return User.find_by_id(session[:user_id]).try(:admin?)
   end
 
   def authorize
-    unless logged_in?
+    unless admin?
       respond_to do |format|
         format.html { redirect_to root_url, :alert => 'You are not authorized to do that.' }
         format.json  { head :forbidden }

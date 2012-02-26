@@ -90,7 +90,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1/:style/:filename.:format
   def download
-    head(:bad_request) and return if params[:style].downcase == 'original' && !logged_in?
+    head(:bad_request) and return if params[:style].downcase == 'original' && !admin?
     
     image = Image.find(params[:id])
     path = image.image.path(params[:style])
