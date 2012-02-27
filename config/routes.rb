@@ -23,8 +23,6 @@ AnnetteRobinson::Application.routes.draw do
     end
   end
 
-  resources :messages
-
   match 'images/:id/:style', :controller => 'images', :action => 'download', :via => :get
 
   match 'logout' => 'sessions#destroy', :via => :get
