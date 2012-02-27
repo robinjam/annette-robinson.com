@@ -184,3 +184,7 @@ label {
 .back-button:hover {
 	background-color: #DDD;
 }
+
+.footer a {
+	text-decoration: none;
+}

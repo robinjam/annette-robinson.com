@@ -31,4 +31,6 @@ html
       div class="content" = yield
 
     div class="footer"
-      p © #{Time.now.year} Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission.
+      p
+        | © #{Time.now.year} Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission
+        a href="/auth/facebook" .
