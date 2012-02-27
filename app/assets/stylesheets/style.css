@@ -172,3 +172,15 @@ label {
 .field_with_errors {
   color: red;
 }
+
+.back-button {
+	cursor: pointer;
+	border-radius: 5px;
+	padding: 10px 20px;
+	font-size: 150%;
+	background-color: #EEE;
+}
+
+.back-button:hover {
+	background-color: #DDD;
+}

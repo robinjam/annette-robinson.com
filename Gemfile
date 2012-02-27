@@ -6,6 +6,10 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -19,12 +23,9 @@ gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
+gem 'slim'
 
 group :test do
 	gem 'shoulda'
 	gem 'factory_girl_rails'
-end
-
-group :production do
-  gem 'pg'
 end

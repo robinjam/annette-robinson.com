@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta charset="UTF-8"
+    title Annette Robinson - Photography & Artwork#{ yield :title_extra }
+    
+    /[ if lt IE 8 ]
+      meta http-equiv="refresh" content="0;url=/old-ie.html"
+    meta name="google-site-verification" content="8e-QUBLnbcQXT0P2rB17eUsh3Ch-qEF9kMoAqzLuReQ"
+    meta name="description" content="The online portfolio of Annette Robinson - Artist, Designer, and Photographer."
+
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+    = yield :head_extra
+
+  body
+    div class="top"
+    div class="main"
+      div class="sidebar"
+        h1 Annette<br>Robinson
+
+        - flash.each do |key, value|
+          p class="flash #{key}" #{value}
+
+        ul
+          = yield :sidebar
+          - if logged_in?
+            li style="margin-top: 10px;" = link_to 'Log out', logout_path
+
+      div class="content" = yield
+
+    div class="footer"
+      p © #{Time.now.year} Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission.

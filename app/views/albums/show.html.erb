@@ -8,8 +8,7 @@
             scrollLeft: 0
           }, 1000);
         })
-        .css("cursor", "pointer")
-        .button()
+        .addClass("back-button")
         .appendTo(".content");
       <% if admin? %>
         $("#albums").sortable({
