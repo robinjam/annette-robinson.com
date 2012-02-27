@@ -8,16 +8,11 @@ AnnetteRobinson::Application.routes.draw do
   resources :albums do
     member do
       get 'delete'
-      post 'promote'
-      post 'demote'
       post 'move'
     end
 
-    resources :images, :only => [:new, :create, :destroy],
-      :controller => 'album_images' do
+    resources :images, only: [:new, :create, :destroy], controller: 'album_images' do
       member do
-        post 'promote'
-        post 'demote'
         post 'move'
       end
     end

@@ -1,0 +1,9 @@
+h1 Delete album
+
+p Are you sure you want to delete the album '#{@album.title}'?
+
+p Please note that none of the images in the album will be deleted in the process.
+
+p
+  = button_to 'Yes, delete the album', @album, method: :delete
+  = button_to 'Cancel', @album, method: :get

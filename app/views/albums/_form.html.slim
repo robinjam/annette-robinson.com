@@ -1,0 +1,11 @@
+= form_for(@album) do |f|
+  = render partial: "partials/errors", locals: { object: @album }
+
+  p
+    = f.label :title
+    = f.text_field :title
+  p
+    label
+    = f.submit
+    |  or 
+    = link_to 'Cancel', root_path

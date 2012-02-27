@@ -18,12 +18,6 @@ class AlbumsControllerTest < ActionController::TestCase
     assert_template 'first'
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:albums)
-  end
-
   test "should get new" do
     get :new
     assert_response :success
@@ -65,33 +59,13 @@ class AlbumsControllerTest < ActionController::TestCase
     assert_redirected_to root_path
   end
 
-  test "should promote album" do
-    @album_two = Factory(:album)
-    assert_difference('@album_two.position', -1) do
-      post :promote, :id => @album_two.to_param
-      @album_two.reload
-    end
-
-    assert_redirected_to @album_two
-  end
-
-  test "should demote album" do
-    @album_two = Factory(:album)
-    assert_difference('@album.position') do
-      post :demote, :id => @album.to_param
-      @album.reload
-    end
-
-    assert_redirected_to @album
-  end
-
   test "should move album" do
     @album_two = Factory(:album)
     assert_difference('@album.position') do
-      post :move, :id => @album_two.to_param, :to => 1
+      post :move, :id => @album_two.to_param, :to => 1, :format => 'json'
       @album.reload
     end
 
-    assert_redirected_to @album_two
+    assert_response :success
   end
 end

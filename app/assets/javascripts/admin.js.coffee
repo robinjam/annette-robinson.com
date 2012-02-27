@@ -10,12 +10,4 @@
 # WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 # GO AFTER THE REQUIRES BELOW.
 #
-#= require jquery
-#= require jquery-ui
-#= require jquery_ujs
-#= require_tree ./application
-
-jQuery ->
-  $(".flash").fadeOut(3000, "easeInExpo")
-  $("form").submit ->
-    $(this).find("input[type=submit]").attr("disabled", "disabled")
+#= require_tree ./admin
