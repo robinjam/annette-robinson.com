@@ -24,6 +24,7 @@ gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
 gem 'slim'
+gem 'redcarpet'
 
 group :test do
 	gem 'shoulda'

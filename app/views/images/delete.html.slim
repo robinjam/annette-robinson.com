@@ -1,0 +1,13 @@
+markdown:
+  # Delete Image
+  
+  Are you sure you want to delete the image '#{@image.title}'?
+  
+  This image is in #{pluralize(@image.albums.count, 'album')}, from which it will be removed if you choose to continue.
+  
+  #{button_to 'Yes, delete this image', @image, method: :delete}
+  #{button_to 'Cancel', images_path, method: :get}
+  
+  ## Image Preview
+  
+  ![#{@image.title}](#{@image.image.url})

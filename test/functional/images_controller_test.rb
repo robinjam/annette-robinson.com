@@ -22,12 +22,7 @@ class ImagesControllerTest < ActionController::TestCase
       post :create, :image => Factory.attributes_for(:image)
     end
 
-    assert_redirected_to image_path(assigns(:image))
-  end
-
-  test "should show image" do
-    get :show, :id => @image.to_param
-    assert_response :success
+    assert_redirected_to images_path
   end
 
   test "should get edit" do
@@ -37,7 +32,7 @@ class ImagesControllerTest < ActionController::TestCase
 
   test "should update image" do
     put :update, :id => @image.to_param, :image => @image.attributes
-    assert_redirected_to image_path(assigns(:image))
+    assert_redirected_to images_path
   end
 
   test "should get delete" do

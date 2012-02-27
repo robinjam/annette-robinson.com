@@ -188,3 +188,12 @@ label {
 .footer a {
 	text-decoration: none;
 }
+
+th {
+  text-align: left;
+}
+
+table {
+  margin-left: -10px;
+  border-spacing: 10px 0;
+}

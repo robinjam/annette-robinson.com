@@ -9,12 +9,13 @@ html
     meta name="google-site-verification" content="8e-QUBLnbcQXT0P2rB17eUsh3Ch-qEF9kMoAqzLuReQ"
     meta name="description" content="The online portfolio of Annette Robinson - Artist, Designer, and Photographer."
 
+    script src="/images.js"
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
     = csrf_meta_tag
     = yield :head_extra
 
-  body
+  body class="#{controller_name} #{action_name}"
     div class="top"
     div class="main"
       div class="sidebar"
