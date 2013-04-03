@@ -18,7 +18,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'paperclip'
+gem 'paperclip', '~> 2.0'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
@@ -28,5 +28,5 @@ gem 'redcarpet'
 
 group :test do
 	gem 'shoulda'
-	gem 'factory_girl_rails'
+	gem 'factory_girl_rails', '~> 1.0'
 end

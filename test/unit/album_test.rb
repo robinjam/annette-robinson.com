@@ -4,7 +4,6 @@ class AlbumTest < ActiveSupport::TestCase
   should have_many(:album_images).dependent :destroy
   should have_many(:images).through :album_images
   should allow_mass_assignment_of :title
-  should_not allow_mass_assignment_of :position
 
   context "validations" do
     setup do
