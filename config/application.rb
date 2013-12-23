@@ -58,5 +58,7 @@ module AnnetteRobinson
 
     # Don't initialize when precompiling assets
     config.assets.initialize_on_precompile = false
+
+    config.i18n.enforce_available_locales = true
   end
 end
