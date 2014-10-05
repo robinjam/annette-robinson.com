@@ -34,7 +34,8 @@ class Image < ActiveRecord::Base
         }
       },
       :default_style => :medium,
-      :path => "/:style/:id/:filename"
+      :path => "/:style/:id/:filename",
+      :use_timestamp => false
     }.merge(STORAGE_OPTIONS)
 
   validates_presence_of :title
