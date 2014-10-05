@@ -4,7 +4,7 @@
     ul id="albums"
       - Album.ordered.each do |album|
         li id="album-#{album.to_param}"
-          = link_to_unless_current album.title, album
+          = link_to_unless(@album == album, album.title, album)
           - if admin?
             span class="extra-buttons"
               = button_to '✎', edit_album_path(album), method: :get, title: 'Rename this album...'

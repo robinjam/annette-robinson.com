@@ -7,6 +7,9 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
+    if request.path != album_path(@album)
+      redirect_to @album
+    end
   end
 
   def new

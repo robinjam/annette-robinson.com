@@ -15,4 +15,8 @@ class Album < ActiveRecord::Base
     conditions = ['id NOT IN (?)', album_images.map(&:image_id)] unless album_images.empty?
     Image.all(:conditions => conditions, :order => 'title')
   end
+
+  def to_param
+    "#{id}-#{title.downcase.gsub(/[^[:alnum:]]+/, '-')}"
+  end
 end
