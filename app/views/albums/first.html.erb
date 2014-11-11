@@ -1,0 +1,7 @@
+<h1>Welcome</h1>
+
+<p>This website is currently under construction. Please come back later.</p>
+
+<% if admin? %>
+  <p><%= link_to 'Click here', new_album_path %> to create your first album.</p>
+<% end %>

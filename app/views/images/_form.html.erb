@@ -1,0 +1,17 @@
+<%= form_for @image, html: { multipart: true } do |f| %>
+  <%= render partial: 'partials/errors', locals: { object: @image } %>
+
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </p>
+  <p>
+    <%= f.submit %>
+    or
+    <%= link_to 'Cancel', images_path %>
+  </p>
+<% end %>

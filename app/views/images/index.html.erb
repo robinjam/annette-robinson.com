@@ -1,0 +1,27 @@
+<% content_for :sidebar do %>
+  <li><%= link_to 'Manage Albums...', root_path %></li>
+<% end %>
+
+<h1>Listing images</h1>
+
+<p>
+  <%= button_to 'Upload Image...', new_image_path, method: :get %>
+</p>
+
+<table id="images">
+  <tr>
+    <th>Title</th>
+    <th>Used in</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @images.each do |image| %>
+    <tr class="image" data-imageid="<%= image.id %>">
+      <td><%= image.title %></td>
+      <td><%= pluralize(image.albums.count, 'album') %></td>
+      <td><%= link_to 'Edit', edit_image_path(image) %></td>
+      <td><%= link_to 'Delete', delete_image_path(image) %></td>
+    </tr>
+  <% end %>
+</table>

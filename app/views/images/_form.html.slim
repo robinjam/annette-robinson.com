@@ -1,9 +1,0 @@
-= form_for @image, html: { multipart: true } do |f|
-  = render partial: "partials/errors", locals: { object: @image }
-
-  markdown:
-    #{f.label :title} #{f.text_field :title}
-
-    #{f.label :image} #{f.file_field :image}
-
-    #{f.submit} or [Cancel](#{images_path})
