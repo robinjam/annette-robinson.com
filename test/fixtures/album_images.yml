@@ -1,0 +1,14 @@
+one:
+  album: one
+  image: one
+  position: 1
+
+two:
+  album: two
+  image: one
+  position: 2
+
+three:
+  album: two
+  image: two
+  position: 1
