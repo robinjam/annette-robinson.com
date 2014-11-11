@@ -1,0 +1,4 @@
+admin:
+  provider: developer
+  uid: user@example.com
+  admin: true
