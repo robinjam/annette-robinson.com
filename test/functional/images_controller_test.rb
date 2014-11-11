@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ImagesControllerTest < ActionController::TestCase
   setup do
-    @image = Factory(:image)
+    @image = images(:one)
     log_in
   end
 
@@ -19,30 +19,33 @@ class ImagesControllerTest < ActionController::TestCase
 
   test "should create image" do
     assert_difference('Image.count') do
-      post :create, :image => Factory.attributes_for(:image)
+      post :create, image: { title: "Image 3", image: fixture_file_upload('sample_image.jpg', 'image/jpeg') }
     end
 
     assert_redirected_to images_path
   end
 
   test "should get edit" do
-    get :edit, :id => @image.to_param
+    get :edit, id: @image
     assert_response :success
   end
 
   test "should update image" do
-    put :update, :id => @image.to_param, :image => @image.attributes
+    # Attach a file to the image so the update succeeds
+    @image.update_attributes!(image: fixture_file_upload('sample_image.jpg', 'image/jpeg'))
+
+    put :update, id: @image, image: { title: @image.title }
     assert_redirected_to images_path
   end
 
   test "should get delete" do
-    get :delete, :id => @image.to_param
+    get :delete, id: @image
     assert_response :success
   end
 
   test "should destroy image" do
     assert_difference('Image.count', -1) do
-      delete :destroy, :id => @image.to_param
+      delete :destroy, id: @image
     end
 
     assert_redirected_to images_path

@@ -2,43 +2,41 @@ require 'test_helper'
 
 class AlbumImagesControllerTest < ActionController::TestCase
   setup do
-    @album_image = Factory(:album_image)
+    @album_image = album_images(:two)
     log_in
   end
 
   test "should redirect on get to new with no additional images" do
-    get :new, :album_id => @album_image.album.to_param
-    assert_redirected_to album_path(@album_image.album.to_param)
+    get :new, album_id: @album_image.album
+    assert_redirected_to album_path(@album_image.album)
   end
 
   test "should get new" do
-    Factory(:image)
-    get :new, :album_id => @album_image.album.to_param
+    get :new, album_id: album_images(:one).album
     assert_response :success
   end
 
-  test "should create album image" do
+  test "should create album_image" do
+    @album_image = album_images(:one)
+
     assert_difference('AlbumImage.count') do
-      album_id = @album_image.album.to_param
-      image_id = Factory(:image).to_param
-      post :create, :album_id => album_id, :album_image => { :image_id => image_id }
+      post :create, album_id: @album_image.album, album_image: { image_id: images(:two) }
     end
 
-    assert_redirected_to @album_image.album
+    assert_redirected_to album_path(@album_image.album)
   end
 
-  test "should destroy album image" do
+  test "should destroy album_image" do
     assert_difference('AlbumImage.count', -1) do
-      delete :destroy, :album_id => @album_image.album.to_param, :id => @album_image.image.to_param
+      delete :destroy, album_id: @album_image.album, id: @album_image
     end
 
-    assert_redirected_to album_path(@album_image.album.to_param)
+    assert_redirected_to album_path(@album_image.album)
   end
 
-  test "should move album image" do
-    @album_image_two = Factory(:album_image, :album => @album_image.album)
-    assert_difference('@album_image.position') do
-      post :move, :album_id => @album_image_two.album.to_param, :id => @album_image_two.image.to_param, :to => 1, :format => 'json'
+  test "should move album_image" do
+    assert_difference('@album_image.position', -1) do
+      post :move, album_id: @album_image.album, id: @album_image.image, to: 1, format: 'json'
       @album_image.reload
     end
 

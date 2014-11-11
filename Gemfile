@@ -21,10 +21,5 @@ gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
 
-group :test do
-	gem 'shoulda'
-	gem 'factory_girl_rails', '~> 1.0'
-end
-
 # Heroku integration
 gem 'rails_12factor'
