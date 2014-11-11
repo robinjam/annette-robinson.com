@@ -20,7 +20,6 @@ gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
-gem 'redcarpet'
 
 group :test do
 	gem 'shoulda'
