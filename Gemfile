@@ -22,4 +22,4 @@ gem 'aws-sdk'
 gem 'thin'
 
 # Heroku integration
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
