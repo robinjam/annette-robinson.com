@@ -1,4 +1,4 @@
-AnnetteRobinson::Application.routes.draw do
+Rails.application.routes.draw do
   resources :images do
     member do
       get 'delete'
