@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_filter :authorize, :except => :download
+  skip_before_filter :verify_authenticity_token, only: [:index]
 
   def index
     @images = Image.order(:title)
