@@ -1,8 +1,9 @@
 class ImagesController < ApplicationController
   before_filter :authorize, :except => :download
+  skip_before_filter :verify_authenticity_token, only: [:index]
 
   def index
-    @images = Image.all(:order => 'title')
+    @images = Image.order(:title)
   end
 
   def new
@@ -14,14 +15,14 @@ class ImagesController < ApplicationController
   end
 
   def create
-    @image = Image.new(params[:image])
+    @image = Image.new(image_params)
     @image.save ?
       redirect_to(images_path, notice: 'Image was successfully created.') : render(:new)
   end
 
   def update
     @image = Image.find(params[:id])
-    @image.update_attributes(params[:image]) ?
+    @image.update_attributes(image_params) ?
       redirect_to(images_path, notice: 'Image was successfully updated.') : render(:new)
   end
 
@@ -43,5 +44,11 @@ class ImagesController < ApplicationController
     head(:bad_request) and return unless File.exist?(path)
 
     send_file path, :type => image.image.content_type, :disposition => 'inline'
+  end
+
+  private
+
+  def image_params
+    params.require(:image).permit(:title, :image)
   end
 end

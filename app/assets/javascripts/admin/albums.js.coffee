@@ -1,4 +1,4 @@
-jQuery ->
+$(document).on "page:change", ->
   if $("body").is(".albums.show")
     $(".extra-buttons").hide();
 

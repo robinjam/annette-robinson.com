@@ -13,9 +13,10 @@
 #= require jquery
 #= require jquery-ui
 #= require jquery_ujs
+#= require turbolinks
 #= require_tree ./application
 
-jQuery ->
+$(document).on "page:change", ->
   $(".flash").delay(5000).fadeOut(1000)
   $("form").submit ->
     $(this).find("input[type=submit]").attr("disabled", "disabled")

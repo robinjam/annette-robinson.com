@@ -21,14 +21,14 @@ class AlbumsController < ApplicationController
   end
 
   def create
-    @album = Album.new(params[:album])
+    @album = Album.new(album_params)
     @album.save ?
       redirect_to(@album, notice: 'Album was successfully created.') : render(:new)
   end
 
   def update
     @album = Album.find(params[:id])
-    @album.update_attributes(params[:album]) ?
+    @album.update_attributes(album_params) ?
       redirect_to(@album, notice: 'Album was successfully updated.') : render(:new)
   end
 
@@ -49,5 +49,11 @@ class AlbumsController < ApplicationController
     respond_to do |format|
       format.json { head :ok }
     end
+  end
+
+  private
+
+  def album_params
+    params.require(:album).permit(:title)
   end
 end

@@ -1,4 +1,4 @@
-jQuery ->
+$(document).on "page:change", ->
   if $("body").is(".images.index")
     $("body").append $("<img id='preview'>")
 

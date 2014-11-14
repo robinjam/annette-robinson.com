@@ -4,8 +4,6 @@ class Image < ActiveRecord::Base
   has_many :album_images, :dependent => :destroy
   has_many :albums, :through => :album_images
 
-  attr_accessible :title, :image
-
   has_attached_file :image, {
       :processors => [:watermark],
       :styles => {
