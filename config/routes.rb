@@ -22,7 +22,7 @@ AnnetteRobinson::Application.routes.draw do
 
   match 'logout' => 'sessions#destroy', :via => :get
 
-  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
   root :to => 'albums#first'
 end
