@@ -21,5 +21,4 @@ class Image < ActiveRecord::Base
 
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => /^image\/.+$/
-  validates_attachment_size :image, :less_than => 10.megabytes
 end
