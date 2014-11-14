@@ -15,4 +15,4 @@
 /tmp
 
 # Ignore uploaded images.
-/uploads/images
+/public/system/

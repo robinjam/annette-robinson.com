@@ -18,10 +18,7 @@ class Image < ActiveRecord::Base
       :path => ':attachment/:id/:style'
     }
   else
-    STORAGE_OPTIONS = {
-      :url => '/:class/:id/:style.:extension',
-      :path => ':rails_root/uploads/:attachment/:id/:style'
-    }
+    STORAGE_OPTIONS = {}
   end
 
   has_attached_file :image, {
@@ -30,11 +27,10 @@ class Image < ActiveRecord::Base
         :medium => {
           :geometry => "1000x400>",
           :format => 'jpg',
-          :watermark_path => "#{Rails.root}/uploads/watermark.png"
+          :watermark_path => "#{Rails.root}/lib/assets/images/watermark.png"
         }
       },
       :default_style => :medium,
-      :path => "/:style/:id/:filename",
       :use_timestamp => false
     }.merge(STORAGE_OPTIONS)
 
