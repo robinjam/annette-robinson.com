@@ -6,21 +6,6 @@ class Image < ActiveRecord::Base
 
   attr_accessible :title, :image
 
-  if Rails.env.production?
-    STORAGE_OPTIONS = {
-      :storage => :s3,
-      :bucket => 'annette-robinson',
-      :s3_credentials => {
-        :access_key_id => ENV['S3_ACCESS_KEY_ID'],
-        :secret_access_key => ENV['S3_SECRET_ACCESS_KEY']
-      },
-      :s3_protocol => :https,
-      :path => ':attachment/:id/:style'
-    }
-  else
-    STORAGE_OPTIONS = {}
-  end
-
   has_attached_file :image, {
       :processors => [:watermark],
       :styles => {
@@ -32,7 +17,7 @@ class Image < ActiveRecord::Base
       },
       :default_style => :medium,
       :use_timestamp => false
-    }.merge(STORAGE_OPTIONS)
+    }
 
   validates_presence_of :title
 
