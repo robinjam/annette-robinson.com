@@ -23,3 +23,6 @@ gem 'thin'
 
 # Heroku integration
 gem 'rails_12factor', group: :production
+
+# Disable attr_accessible support in preparation for Rails 4
+gem 'strong_parameters'
