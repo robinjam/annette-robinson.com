@@ -18,8 +18,6 @@ Rails.application.routes.draw do
     end
   end
 
-  match 'images/:id/:style', :controller => 'images', :action => 'download', :via => :get
-
   match 'logout' => 'sessions#destroy', :via => :get
 
   match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]

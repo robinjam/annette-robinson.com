@@ -36,16 +36,6 @@ class ImagesController < ApplicationController
     redirect_to(images_url, :notice => 'Image was successfully deleted.')
   end
 
-  def download
-    head(:bad_request) and return if params[:style].downcase == 'original' && !admin?
-    
-    image = Image.find(params[:id])
-    path = image.image.path(params[:style])
-    head(:bad_request) and return unless File.exist?(path)
-
-    send_file path, :type => image.image.content_type, :disposition => 'inline'
-  end
-
   private
 
   def image_params
