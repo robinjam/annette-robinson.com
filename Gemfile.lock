@@ -91,10 +91,10 @@ GEM
       multi_json (~> 1.3)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
-    paperclip (2.8.0)
-      activerecord (>= 2.3.0)
-      activesupport (>= 2.3.2)
-      cocaine (>= 0.0.2)
+    paperclip (4.2.0)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
       mime-types
     pg (0.17.1)
     polyglot (0.3.5)
@@ -162,7 +162,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   omniauth-facebook
-  paperclip (~> 2.0)
+  paperclip
   pg
   rails (= 3.2.20)
   rails_12factor

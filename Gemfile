@@ -15,7 +15,7 @@ end
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 
-gem 'paperclip', '~> 2.0'
+gem 'paperclip'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
