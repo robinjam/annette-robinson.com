@@ -2,7 +2,7 @@ class ImagesController < ApplicationController
   before_filter :authorize, :except => :download
 
   def index
-    @images = Image.all(:order => 'title')
+    @images = Image.order(:title)
   end
 
   def new
