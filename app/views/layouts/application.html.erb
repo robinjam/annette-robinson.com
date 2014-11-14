@@ -25,12 +25,14 @@
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
 
     <script src="/images.js"></script>
-    <%= stylesheet_link_tag 'application' %>
-    <%= stylesheet_link_tag 'admin' if admin? %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag 'admin' if admin? %>
 
-    <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: "all", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag 'admin', media: "all", "data-turbolinks-track" => true if admin? %>
+
+    <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
+    <%= javascript_include_tag 'admin', "data-turbolinks-track" => true if admin? %>
+
+    <%= csrf_meta_tags %>
 
     <%= yield :head_extra %>
   </head>
