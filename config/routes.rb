@@ -1,26 +1,21 @@
 Rails.application.routes.draw do
-  resources :images do
-    member do
-      get 'delete'
-    end
-  end
-  
-  resources :albums do
-    member do
-      get 'delete'
-      post 'move'
-    end
-
-    resources :images, only: [:new, :create, :destroy], controller: 'album_images' do
-      member do
-        post 'move'
-      end
-    end
+  concern :deletable do
+    get :delete, on: :member
   end
 
-  match 'logout' => 'sessions#destroy', :via => :get
+  concern :moveable do
+    post :move, on: :member
+  end
 
-  match '/auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
 
-  root :to => 'albums#first'
+  resources :images, concerns: [:deletable]
+
+  resources :albums, concerns: [:deletable, :moveable] do
+    resources :images, only: [:new, :create, :destroy], concerns: [:moveable], controller: 'album_images'
+  end
+
+  get '/auth/:provider/callback' => 'sessions#create'
+  get 'logout' => 'sessions#destroy'
+
+  root to: 'albums#first'
 end
