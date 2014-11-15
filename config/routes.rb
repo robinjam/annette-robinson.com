@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :images, only: [:new, :create, :destroy], concerns: [:moveable], controller: 'album_images'
   end
 
-  get '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'logout' => 'sessions#destroy'
 
   root to: 'albums#first'
