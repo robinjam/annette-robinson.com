@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/robinjam/paperclip-meta.git
+  revision: 603aa2ae247c781ce89fcf0ee3ffff99d7fbbabb
+  branch: aspect-ratio
+  specs:
+    paperclip-meta (1.1.0)
+      paperclip (>= 3.0.2, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -161,6 +169,7 @@ DEPENDENCIES
   jquery-ui-rails
   omniauth-facebook
   paperclip
+  paperclip-meta!
   pg
   rails (= 4.1.8)
   rails_12factor

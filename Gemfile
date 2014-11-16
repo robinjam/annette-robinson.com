@@ -27,6 +27,7 @@ gem 'turbolinks'
 gem 'spring',        group: :development
 
 gem 'paperclip'
+gem 'paperclip-meta', github: 'robinjam/paperclip-meta', branch: 'aspect-ratio'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
