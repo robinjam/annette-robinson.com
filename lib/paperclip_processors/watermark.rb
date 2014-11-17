@@ -3,7 +3,7 @@ module Paperclip
     def initialize(file, options = {}, attachment = nil)
       super
       @watermark_path = options[:watermark_path]
-      @position       = options[:position].nil? ? "SouthEast" : options[:position]
+      @position       = options[:position].nil? ? "SouthWest" : options[:position]
     end
 
     def make
