@@ -1,5 +1,3 @@
-Turbolinks.enableTransitionCache()
-
 $(document).on "page:before-change", ->
   $("body").addClass("wait")
 
