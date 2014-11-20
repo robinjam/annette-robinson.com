@@ -1,0 +1,16 @@
+@import 'constants';
+
+$flash-color: lighten($base-color, 5%);
+
+div.flash {
+  -webkit-flex: 0;
+  padding: 10px;
+
+  &.alert {
+    background-color: mix($flash-color, red, 90%);
+  }
+
+  &.notice {
+    background-color: mix($flash-color, blue, 90%);
+  }
+}
