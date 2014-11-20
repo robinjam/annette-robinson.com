@@ -16,7 +16,6 @@ $(document).on "page:change", ->
 
     $("#images").sortable({
       tolerance: 'pointer'
-      revert: true
       update: (event, ui) ->
         id = ui.item.data("image-id")
         index = parseInt(ui.item.index()) + 1
