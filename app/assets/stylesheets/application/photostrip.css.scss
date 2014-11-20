@@ -12,15 +12,21 @@ ul.photostrip {
     position: relative;
   }
 
-  i {
+  .warning-icon, .delete-button {
     padding: 10px;
     position: absolute;
     color: rgba(255, 255, 255, 0.8);
     text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
   }
 
-  i.fa-times {
+  .delete-button {
     right: 0px;
+    cursor: pointer;
+    visibility: hidden;
+  }
+
+  li:hover a.delete-button {
+    visibility: visible;
   }
 
   img {

@@ -24,17 +24,11 @@ $(document).on "page:change", ->
           .error -> location.reload()
     }).disableSelection()
 
-    $("#images li")
-      .mouseenter(-> $(this).find(".fa-times").css("visibility", "visible"))
-      .mouseleave(-> $(this).find(".fa-times").css("visibility", "hidden"))
+    $("#images .delete-button").click ->
+      $(this).parent().hide()
 
-    $("#images .fa-times").css("visibility", "hidden")
-
-    $("#images li .fa-times").click ->
-      image = $(this).parent()
-      $.post(location.pathname + "/images/" + image.data("image-id") + ".json", { _method: "delete" }, null, 'html')
-        .error -> location.reload()
-      $(image).remove()
+    $("a[data-remote]").on "ajax:error", (e, data, status, xhr) ->
+      location.reload()
 
     $(".sidebar")
       .mouseenter(-> $(".extra-buttons").show())

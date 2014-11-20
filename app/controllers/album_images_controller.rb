@@ -18,7 +18,10 @@ class AlbumImagesController < ApplicationController
 
   def destroy
     @album_image.destroy
-    redirect_to album_url(@album_image.album)
+    respond_to do |format|
+      format.html { redirect_to album_url(@album_image.album) }
+      format.js { head :ok }
+    end
   end
 
   def move
