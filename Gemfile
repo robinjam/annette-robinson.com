@@ -32,6 +32,7 @@ gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
+gem 'font-awesome-sass'
 
 # Heroku integration
 gem 'rails_12factor', group: :production
