@@ -1,11 +1,4 @@
 <% content_for :title_extra, " - #{@album.title}" %>
-<% content_for :sidebar do %>
-  <% if admin? %>
-    <ul>
-      <li class="separator"><%= link_to 'Create Album...', new_album_path %></li>
-    </ul>
-  <% end %>
-<% end %>
 
 <ul class="photostrip" id="images">
   <% @album.images.each do |image| %>

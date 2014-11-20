@@ -66,6 +66,11 @@
             <li data-album-id="<%= album.to_param %>" class="<%= 'selected' if album == @album %>"><%= link_to album.title, album %></li>
           <% end %>
         </ul>
+        <% if admin? %>
+          <ul>
+            <li class="separator"><%= link_to 'Create Album...', new_album_path %></li>
+          </ul>
+        <% end %>
         <%= yield :sidebar %>
       </nav>
     </div>
