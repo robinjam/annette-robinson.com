@@ -1,0 +1,51 @@
+/* Styles for the main body of the page, containing the main content section and the sidebar */
+
+@import 'constants';
+
+body > div {
+  display: -webkit-flex;
+  -webkit-flex: 1;
+
+  /* Main page content */
+  > div {
+    -webkit-flex: 1;
+    padding: 15px;
+  }
+
+  /* Sidebar */
+  > nav {
+    padding: 15px;
+    background-color: lighten($base-color, 1.25%);
+
+    ul {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+    }
+
+    a {
+      padding: 10px 15px;
+      display: block;
+      white-space: nowrap;
+
+      &:hover { color: inherit; }
+    }
+
+    li.selected, li:hover {
+      background-color: lighten($base-color, 5%);
+    }
+
+    li.separator {
+      border-top: solid 1px lighten($base-color, 10%);
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  body > div {
+    -webkit-flex-direction: column;
+  }
+  body > div > div {
+    padding-right: 15px;
+  }
+}

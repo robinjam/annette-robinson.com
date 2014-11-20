@@ -1,0 +1,52 @@
+/* Styles for the top bar, containing the site logo and the top navigation menu */
+
+@import 'constants';
+
+body > header {
+  display: -webkit-flex;
+
+  /* Site logo */
+  hgroup {
+    background-color: lighten($base-color, 5%);
+    padding: 15px;
+
+    h1, h2 {
+      font-size: inherit;
+      display: inline;
+    }
+
+    h1 { font-weight: 700; }
+    h2 { font-weight: 400; }
+  }
+
+  /* Top navigation menu */
+  nav {
+    -webkit-flex: 1;
+    background-color: lighten($base-color, 2.5%);
+    padding: 5px;
+
+    ul {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      display: -webkit-flex;
+    }
+
+    li {
+      display: inline;
+
+      &.authentication { margin-left: auto; }
+    }
+
+    a {
+      display: block;
+      padding: 10px;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  body > header {
+    -webkit-flex-direction: column;
+  }
+}

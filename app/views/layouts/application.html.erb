@@ -39,22 +39,39 @@
     <% flash.each do |key, value| %>
       <div class="flash <%= key %>"><%= value %></div>
     <% end %>
-    <div class="top"></div>
-    <div class="main">
-      <div class="sidebar">
-        <h1>Annette<br>Robinson</h1>
+
+    <header>
+      <%= link_to root_url do %>
+        <hgroup>
+          <h1>Annette Robinson</h1>
+          <h2>Photography &amp; Artwork</h2>
+        </hgroup>
+      <% end %>
+      <nav>
         <ul>
-          <%= yield :sidebar %>
-          <% if logged_in? %>
-            <li style="margin-top: 10px;"><%= link_to 'Log out', logout_path %></li>
+          <li><a href="">About</a></li>
+          <li><a href="">Contact</a></li>
+          <%= content_tag :li, link_to('Manage Images...', images_path) if admin? %>
+          <%= content_tag :li, link_to('Log out', logout_path), class: 'authentication' if logged_in? %>
+        </ul>
+      </nav>
+    </header>
+    <div>
+      <div>
+        <%= yield %>
+      </div>
+      <nav>
+        <ul id="albums">
+          <% Album.ordered.each do |album| %>
+            <li data-album-id="<%= album.to_param %>" class="<%= 'selected' if album == @album %>"><%= link_to album.title, album %></li>
           <% end %>
         </ul>
-      </div>
-      <div class="content"><%= yield %></div>
+        <%= yield :sidebar %>
+      </nav>
     </div>
-    <div class="footer">
-      <p>
-        © <%= Time.now.year %> Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission<a href="/auth/facebook">.</a>
-    </div>
+    <footer>
+      &copy; <%= Time.now.year %> Annette Robinson. All Rights Reserved.
+    </footer>
+    <div style="position: fixed; left: 50%; top: 50%; margin: -1em 0em 0em -1em; display: none;" id="spinner"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
   </body>
 </html>

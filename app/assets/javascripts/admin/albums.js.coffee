@@ -3,29 +3,36 @@ $(document).on "page:change", ->
     $(".extra-buttons").hide();
 
     $("#albums").sortable({
+      axis: 'y'
+      revert: true
+      start: (e, ui) ->
+        ui.placeholder.width(ui.item.width())
       update: (event, ui) ->
-        id = ui.item.attr("id").substring(6)
+        id = ui.item.data("album-id")
         index = parseInt(ui.item.index()) + 1
         $.post("/albums/" + id + "/move.json", { to: index }, null, 'html')
           .error -> location.reload()
       }).disableSelection()
 
     $("#images").sortable({
-      opacity: 0.6,
+      tolerance: 'pointer'
+      revert: true
       update: (event, ui) ->
-        id = ui.item.attr("id").substring(6)
+        id = ui.item.data("image-id")
         index = parseInt(ui.item.index()) + 1
         $.post(location.pathname + "/images/" + id + "/move.json", { to: index }, null, 'html')
           .error -> location.reload()
     }).disableSelection()
 
     $("#images li")
-      .mouseenter(-> $(this).find(".close-button").css("visibility", "visible"))
-      .mouseleave(-> $(this).find(".close-button").css("visibility", "hidden"))
+      .mouseenter(-> $(this).find(".fa-times").css("visibility", "visible"))
+      .mouseleave(-> $(this).find(".fa-times").css("visibility", "hidden"))
 
-    $("#images li .close-button").click ->
-      image = $(this).parent().parent()
-      $.post(location.pathname + "/images/" + image.attr("id").substring(6) + ".json", { _method: "delete" }, null, 'html')
+    $("#images .fa-times").css("visibility", "hidden")
+
+    $("#images li .fa-times").click ->
+      image = $(this).parent()
+      $.post(location.pathname + "/images/" + image.data("image-id") + ".json", { _method: "delete" }, null, 'html')
         .error -> location.reload()
       $(image).remove()
 

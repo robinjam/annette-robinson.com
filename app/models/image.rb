@@ -8,7 +8,7 @@ class Image < ActiveRecord::Base
       :processors => [:watermark],
       :styles => {
         :medium => {
-          :geometry => "1000x400>",
+          :geometry => "x1000>",
           :format => 'jpg',
           :watermark_path => "#{Rails.root}/lib/assets/images/watermark.png"
         }
@@ -21,4 +21,8 @@ class Image < ActiveRecord::Base
 
   validates_attachment_presence :image
   validates_attachment_content_type :image, :content_type => /^image\/.+$/
+
+  def too_small?
+    image.height < 1000
+  end
 end

@@ -1,0 +1,3 @@
+$base-color: #1c1c1f;
+$text-color: invert($base-color);
+$highlight-color: saturate(darken($text-color, 30%), 30%);
