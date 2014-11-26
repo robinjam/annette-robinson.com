@@ -3,6 +3,7 @@ require 'test_helper'
 class AlbumsControllerTest < ActionController::TestCase
   setup do
     @album = albums(:one)
+    @album.images.each { |img| img.update!(image: fixture_file_upload('sample_image.jpg', 'image/jpeg')) }
     log_in
   end
 
