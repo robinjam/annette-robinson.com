@@ -8,8 +8,8 @@ html {
 body {
   min-height: 100%;
   margin: 0px;
-  display: -webkit-flex;
-  -webkit-flex-direction: column;
+  display: flex;
+  flex-direction: column;
   background-color: $base-color;
   color: $text-color;
   font-family: "Open Sans", sans-serif;

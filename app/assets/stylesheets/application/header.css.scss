@@ -3,7 +3,7 @@
 @import 'constants';
 
 body > header {
-  display: -webkit-flex;
+  display: flex;
 
   /* Site logo */
   hgroup {
@@ -21,7 +21,7 @@ body > header {
 
   /* Top navigation menu */
   nav {
-    -webkit-flex: 1;
+    flex: 1;
     background-color: lighten($base-color, 2.5%);
     padding: 5px;
 
@@ -29,7 +29,7 @@ body > header {
       list-style: none;
       padding: 0px;
       margin: 0px;
-      display: -webkit-flex;
+      display: flex;
     }
 
     li {
@@ -47,6 +47,6 @@ body > header {
 
 @media (max-width: 800px) {
   body > header {
-    -webkit-flex-direction: column;
+    flex-direction: column;
   }
 }

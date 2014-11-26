@@ -33,6 +33,7 @@ gem 'omniauth-facebook'
 gem 'aws-sdk'
 gem 'thin'
 gem 'font-awesome-sass'
+gem 'autoprefixer-rails'
 
 # Heroku integration
 gem 'rails_12factor', group: :production

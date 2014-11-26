@@ -3,7 +3,7 @@
 $flash-color: lighten($base-color, 5%);
 
 div.flash {
-  -webkit-flex: 0;
+  flex: 0;
   padding: 10px;
 
   &.alert {

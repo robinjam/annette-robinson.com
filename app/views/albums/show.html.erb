@@ -2,7 +2,7 @@
 
 <ul class="photostrip" id="images">
   <% @album.images.each do |image| %>
-    <li style="-webkit-flex: <%= image.image.aspect_ratio %> 1 <%= 400 * image.image.aspect_ratio  %>px;" data-image-id="<%= image.to_param %>">
+    <li style="<%= AutoprefixerRails.process("flex: #{ image.image.aspect_ratio } 1 #{ 400 * image.image.aspect_ratio  }px;") %>" data-image-id="<%= image.to_param %>">
       <% if admin? && image.too_small? %>
         <i class="fa fa-exclamation-triangle warning-icon"></i>
       <% end %>
