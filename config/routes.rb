@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   match '/auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'logout' => 'sessions#destroy'
 
-  root to: 'albums#first'
+  root to: 'albums#show', constraints: -> (req) { Album.any? }
 end

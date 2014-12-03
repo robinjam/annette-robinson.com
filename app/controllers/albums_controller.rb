@@ -1,13 +1,9 @@
 class AlbumsController < ApplicationController
-  before_filter :authorize, except: [:first, :show]
-
-  def first
-    flash.keep and redirect_to album_url(Album.ordered.first) if Album.count > 0
-  end
+  before_filter :authorize, except: [:show]
 
   def show
-    @album = Album.find(params[:id])
-    if request.path != album_path(@album)
+    @album = params[:id] ? Album.find(params[:id]) : Album.ordered.first
+    unless ['/', album_path(@album)].include? request.path
       redirect_to @album
     end
   end

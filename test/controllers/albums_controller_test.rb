@@ -3,20 +3,8 @@ require 'test_helper'
 class AlbumsControllerTest < ActionController::TestCase
   setup do
     @album = albums(:one)
-    @album.images.each { |img| img.update!(image: fixture_file_upload('sample_image.jpg', 'image/jpeg')) }
+    Image.all.each { |img| img.update!(image: fixture_file_upload('sample_image.jpg', 'image/jpeg')) }
     log_in
-  end
-
-  test "should get first album" do
-    get :first
-    assert_redirected_to album_url(Album.ordered.first)
-  end
-
-  test "should render welcome page when there are no albums" do
-    Album.destroy_all
-    get :first
-    assert_response :success
-    assert_template 'first'
   end
 
   test "should get new" do
@@ -30,6 +18,18 @@ class AlbumsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to album_path(assigns(:album))
+  end
+
+  test "should show first album when ID not specified" do
+    get :show
+    assert_response :success
+    assert_equal albums(:two), assigns(:album)
+
+    albums(:one).move_higher
+
+    get :show
+    assert_response :success
+    assert_equal albums(:one), assigns(:album)
   end
 
   test "should show album" do
