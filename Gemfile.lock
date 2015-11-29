@@ -124,6 +124,8 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    sentry-raven (0.15.2)
+      faraday (>= 0.7.6)
     spring (1.4.4)
     sprockets (2.12.4)
       hike (~> 1.2)
@@ -164,6 +166,7 @@ DEPENDENCIES
   rails (= 4.1.14)
   rails_12factor
   sass-rails (~> 4.0.3)
+  sentry-raven
   spring
   thin
   turbolinks
