@@ -29,7 +29,7 @@ gem 'spring',        group: :development
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
-gem 'aws-sdk'
+gem 'aws-sdk-v1'
 gem 'thin'
 gem 'sentry-raven'
 
