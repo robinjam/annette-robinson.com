@@ -1,1 +1,1 @@
-var image_urls = { <%= Image.all.collect { |i| "#{i.id}: \"#{i.image.url}\"" }.join(", ").html_safe %> };
+var image_urls = <%= Image.all.map { |i| [i.id, i.image.url] }.to_h.to_json.html_safe %>;
