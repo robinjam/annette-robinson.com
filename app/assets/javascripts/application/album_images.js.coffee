@@ -1,4 +1,4 @@
-$(document).on "page:change", ->
+$(document).on "turbolinks:load", ->
   if $("body").is(".album_images.new")
     $("<h2>Preview</h2><img id=\"preview\">").appendTo("div.content")
 

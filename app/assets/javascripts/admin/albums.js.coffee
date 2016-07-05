@@ -1,4 +1,4 @@
-$(document).on "page:change", ->
+$(document).on "turbolinks:load", ->
   if $("body").is(".albums.show")
     $(".extra-buttons").hide();
 

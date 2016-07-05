@@ -1,5 +1,5 @@
-$(document).on "page:before-change", ->
+$(document).on "turbolinks:click", ->
   $("body").addClass("wait")
 
-$(document).on "page:change", ->
+$(document).on "turbolinks:load", ->
   $("body").removeClass("wait")

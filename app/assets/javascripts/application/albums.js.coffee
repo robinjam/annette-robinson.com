@@ -1,4 +1,4 @@
-$(document).on "page:change", ->
+$(document).on "turbolinks:load", ->
   if $("body").is(".albums.show")
     $("<a>◀︎</a>").click(-> $(".main").animate { scrollLeft: 0 }, 1000)
       .addClass("back-button")
