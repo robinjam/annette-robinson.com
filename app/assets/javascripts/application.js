@@ -14,4 +14,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+//= require raven
+//= require ./raven_config
 //= require_tree ./application

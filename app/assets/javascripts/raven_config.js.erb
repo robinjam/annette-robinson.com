@@ -1,0 +1,3 @@
+<% if Rails.env.production? %>
+  Raven.config('https://3e039c647ea74e8fb6ffe8c88a429348@app.getsentry.com/59824').install()
+<% end %>
