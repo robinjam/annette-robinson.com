@@ -39,7 +39,7 @@ end
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
-gem 'aws-sdk-v1'
+gem 'aws-sdk', '~> 2.0'
 gem 'thin'
 gem 'sentry-raven'
 
