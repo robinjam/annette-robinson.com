@@ -5,9 +5,3 @@
 {<img src="https://hakiri.io/github/robinjam/annette-robinson.com/master.svg" alt="Security" />}[https://hakiri.io/github/robinjam/annette-robinson.com/master]
 
 This is the source repository for {annette-robinson.com}[http://annette-robinson.com].
-
-== Dependencies
-
-* Ruby 2.0.0
-* PostgreSQL
-* ImageMagick
