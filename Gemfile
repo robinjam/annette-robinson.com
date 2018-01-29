@@ -53,7 +53,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '~> 2.0'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'sentry-raven'
