@@ -19,33 +19,33 @@ class ImagesControllerTest < ActionController::TestCase
 
   test "should create image" do
     assert_difference('Image.count') do
-      post :create, image: { title: "Image 3", image: fixture_file_upload('sample_image.jpg', 'image/jpeg') }
+      post :create, params: { image: { title: "Image 3", image: fixture_file_upload('/files/sample_image.jpg', 'image/jpeg') } }
     end
 
     assert_redirected_to images_path
   end
 
   test "should get edit" do
-    get :edit, id: @image
+    get :edit, params: { id: @image }
     assert_response :success
   end
 
   test "should update image" do
     # Attach a file to the image so the update succeeds
-    @image.update_attributes!(image: fixture_file_upload('sample_image.jpg', 'image/jpeg'))
+    @image.update_attributes!(image: fixture_file_upload('/files/sample_image.jpg', 'image/jpeg'))
 
-    put :update, id: @image, image: { title: @image.title }
+    put :update, params: { id: @image, image: { title: @image.title } }
     assert_redirected_to images_path
   end
 
   test "should get delete" do
-    get :delete, id: @image
+    get :delete, params: { id: @image }
     assert_response :success
   end
 
   test "should destroy image" do
     assert_difference('Image.count', -1) do
-      delete :destroy, id: @image
+      delete :destroy, params: { id: @image }
     end
 
     assert_redirected_to images_path

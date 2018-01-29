@@ -9,8 +9,12 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
+!/tmp/.keep
 
-# Ignore uploaded images.
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore uploaded images in development environment.
 /public/system/

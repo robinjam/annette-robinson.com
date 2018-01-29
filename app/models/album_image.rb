@@ -1,4 +1,4 @@
-class AlbumImage < ActiveRecord::Base
+class AlbumImage < ApplicationRecord
   belongs_to :album
   belongs_to :image
 

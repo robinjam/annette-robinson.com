@@ -1,4 +1,4 @@
-class Album < ActiveRecord::Base
+class Album < ApplicationRecord
   has_many :album_images, -> { order :position }, :dependent => :destroy
   has_many :images, -> { order 'album_images.position' }, :through => :album_images
 

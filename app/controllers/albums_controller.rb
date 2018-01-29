@@ -1,5 +1,5 @@
 class AlbumsController < ApplicationController
-  before_filter :authorize, except: [:first, :show]
+  before_action :authorize, except: [:first, :show]
 
   def first
     flash.keep and redirect_to album_url(Album.ordered.first) if Album.count > 0

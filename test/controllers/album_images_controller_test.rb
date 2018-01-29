@@ -7,12 +7,12 @@ class AlbumImagesControllerTest < ActionController::TestCase
   end
 
   test "should redirect on get to new with no additional images" do
-    get :new, album_id: @album_image.album
+    get :new, params: { album_id: @album_image.album }
     assert_redirected_to album_path(@album_image.album)
   end
 
   test "should get new" do
-    get :new, album_id: album_images(:one).album
+    get :new, params: { album_id: album_images(:one).album }
     assert_response :success
   end
 
@@ -20,7 +20,7 @@ class AlbumImagesControllerTest < ActionController::TestCase
     @album_image = album_images(:one)
 
     assert_difference('AlbumImage.count') do
-      post :create, album_id: @album_image.album, album_image: { image_id: images(:two) }
+      post :create, params: { album_id: @album_image.album, album_image: { image_id: images(:two) } }
     end
 
     assert_redirected_to album_path(@album_image.album)
@@ -28,7 +28,7 @@ class AlbumImagesControllerTest < ActionController::TestCase
 
   test "should destroy album_image" do
     assert_difference('AlbumImage.count', -1) do
-      delete :destroy, album_id: @album_image.album, id: @album_image
+      delete :destroy, params: { album_id: @album_image.album, id: @album_image }
     end
 
     assert_redirected_to album_path(@album_image.album)
@@ -36,7 +36,7 @@ class AlbumImagesControllerTest < ActionController::TestCase
 
   test "should move album_image" do
     assert_difference('@album_image.position', -1) do
-      post :move, album_id: @album_image.album, id: @album_image.image, to: 1, format: 'json'
+      post :move, params: { album_id: @album_image.album, id: @album_image.image, to: 1, format: 'json' }
       @album_image.reload
     end
 

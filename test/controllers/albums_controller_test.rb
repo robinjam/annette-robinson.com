@@ -25,35 +25,35 @@ class AlbumsControllerTest < ActionController::TestCase
 
   test "should create album" do
     assert_difference('Album.count') do
-      post :create, album: { title: "Album 3" }
+      post :create, params: { album: { title: "Album 3" } }
     end
 
     assert_redirected_to album_path(assigns(:album))
   end
 
   test "should show album" do
-    get :show, id: @album
+    get :show, params: { id: @album }
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @album
+    get :edit, params: { id: @album }
     assert_response :success
   end
 
   test "should update album" do
-    put :update, id: @album, album: { title: @album.title }
+    put :update, params: { id: @album, album: { title: @album.title } }
     assert_redirected_to album_path(assigns(:album))
   end
 
   test "should get delete" do
-    get :delete, id: @album
+    get :delete, params: { id: @album }
     assert_response :success
   end
 
   test "should destroy album" do
     assert_difference('Album.count', -1) do
-      delete :destroy, id: @album
+      delete :destroy, params: { id: @album }
     end
 
     assert_redirected_to root_path
@@ -61,7 +61,7 @@ class AlbumsControllerTest < ActionController::TestCase
 
   test "should move album" do
     assert_difference('@album.position', -1) do
-      post :move, id: @album, to: 1, format: 'json'
+      post :move, params: { id: @album, to: 1, format: 'json' }
       @album.reload
     end
 

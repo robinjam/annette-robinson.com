@@ -1,6 +1,6 @@
 class AlbumImagesController < ApplicationController
-  before_filter :authorize
-  before_filter :fetch_album_image, only: [:destroy, :move]
+  before_action :authorize
+  before_action :fetch_album_image, only: [:destroy, :move]
 
   def new
     @album_image = AlbumImage.new

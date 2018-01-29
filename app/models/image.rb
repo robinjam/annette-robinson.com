@@ -1,6 +1,6 @@
 require 'paperclip_processors/watermark.rb'
 
-class Image < ActiveRecord::Base
+class Image < ApplicationRecord
   has_many :album_images, :dependent => :destroy
   has_many :albums, :through => :album_images
 
