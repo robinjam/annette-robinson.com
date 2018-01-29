@@ -36,7 +36,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'paperclip'
+gem 'paperclip', '~> 5.2'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
 gem 'aws-sdk', '~> 2.0'
