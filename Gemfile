@@ -59,5 +59,6 @@ gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '~> 2.0'
 gem 'acts_as_list'
 gem 'omniauth-facebook'
+gem 'omniauth-rails_csrf_protection'
 gem 'sentry-raven'
 gem 'rails-controller-testing' # TODO: replace controller tests with integration tests

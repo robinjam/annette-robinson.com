@@ -57,7 +57,7 @@
     </div>
     <div class="footer">
       <p>
-        © <%= Time.now.year %> Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission<a href="/auth/facebook">.</a>
+        © <%= Time.now.year %> Annette Robinson. It is an offence to copy, redistribute or modify any content (including derivative works) from this website without permission<%= link_to '.', "/auth/facebook", method: :post %>
     </div>
   </body>
 </html>
