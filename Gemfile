@@ -8,7 +8,7 @@ git_source(:github) do |repo_name|
 end
 
 
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -55,6 +55,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem 'bootsnap', require: false
 gem 'paperclip', '~> 5.0'
 gem 'aws-sdk', '~> 2.0'
 gem 'acts_as_list'
